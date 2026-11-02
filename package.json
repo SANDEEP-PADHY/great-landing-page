@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@10.28.0",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -29,6 +31,7 @@
     "resend": "^4.6.0",
     "server-only": "^0.0.1",
     "sharp": "^0.34.2",
+    "web-vitals": "^6.2.3",
     "zod": "^3.25.67"
   },
   "devDependencies": {
@@ -43,5 +46,11 @@
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   },
-  "pnpm": { "onlyBuiltDependencies": ["sharp", "esbuild", "unrs-resolver"] }
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "esbuild",
+      "unrs-resolver"
+    ]
+  }
 }

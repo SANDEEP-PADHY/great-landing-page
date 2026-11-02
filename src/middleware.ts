@@ -1,11 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server';
+import { trackingMiddleware } from '@/lib/tracking/middleware';
 
-// WS1 STUB. WS3 implements adminGuard(); WS4 implements trackingMiddleware(). Keep the two functions separate.
+// WS1 STUB. WS3 implements adminGuard(); WS4 implements trackingMiddleware() in src/lib/tracking/middleware.ts. Keep the two functions separate.
 function adminGuard(_req: NextRequest): NextResponse | undefined {
   return undefined;
-}
-function trackingMiddleware(_req: NextRequest, res: NextResponse): NextResponse {
-  return res;
 }
 
 export function middleware(req: NextRequest) {
