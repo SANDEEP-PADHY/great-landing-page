@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GenZy Club Live Webinar</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#D9DCE2}
+a{color:#1D4ED8}a:hover{color:#1E3A8A}
+.nm *{box-sizing:border-box}
+.nm .wrap{max-width:1080px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}
+.nm .sec{padding-top:72px;padding-bottom:72px}
+.nm .disp{font-family:'Inter Tight',Inter,system-ui,sans-serif;letter-spacing:-0.03em}
+.nm .h1{font-size:42px;line-height:1.02;font-weight:800}
+.nm .h2{font-size:30px;line-height:1.12;font-weight:800}
+.nm .lead{font-size:17px;line-height:1.6}
+.nm .hook{font-size:18px;line-height:1.35}
+.nm .price-xl{font-size:52px}
+.nm .stack{display:flex;flex-direction:column;gap:24px}
+.nm .bento{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;grid-template-areas:"head" "claude" "buy" "get" "photo"}
+.nm .bn-title{font-size:17px}
+.nm .t1,.nm .t2,.nm .t3{display:block}
+.nm .t1{font-size:55px;line-height:1}
+.nm .t2{font-size:34px;line-height:1.1}
+.nm .t3{font-size:21px;line-height:1.3;letter-spacing:-0.01em}
+.nm .bn-logo{width:56px;height:56px}
+.nm .raised{box-shadow:10px 10px 24px #AEB3BD,-8px -8px 20px #F2F3F6;border:1px solid #FFFFFF}
+.nm .raised-sm{box-shadow:5px 5px 12px #AEB3BD,-4px -4px 10px #F2F3F6;border:1px solid #FFFFFF}
+.nm .inset{background:#E3E6EB !important;box-shadow:inset 4px 4px 10px #BFC4CC,inset -4px -4px 10px #FFFFFF;border:1px solid #CDD1D8}
+.nm .d-raised{box-shadow:12px 12px 28px #9EA3AD,-8px -8px 20px #F2F3F6}
+.nm .hero{display:grid;grid-template-columns:minmax(0,1fr);gap:36px;align-items:center}
+.nm .g2,.nm .g3,.nm .g4{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.nm .slots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.nm button{font-family:inherit;cursor:pointer}
+.nm button:focus-visible,.nm input:focus-visible,.nm a:focus-visible{outline:3px solid #1D4ED8;outline-offset:3px}
+.nm .cta{transition:transform .12s ease, box-shadow .12s ease}
+.nm .cta:active{transform:translateY(1px);box-shadow:inset 3px 3px 8px rgba(0,0,0,.25)}
+.nm .sbar-copy{display:none}
+@media (min-width:900px){
+.nm .wrap{padding-left:40px;padding-right:40px}
+.nm .sec{padding-top:144px;padding-bottom:144px}
+.nm .h1{font-size:89px;line-height:.98}
+.nm .h2{font-size:55px;line-height:1.05}
+.nm .lead{font-size:21px}
+.nm .hook{font-size:21px}
+.nm .price-xl{font-size:68px}
+.nm .stack{gap:34px}
+.nm .bento{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:21px 34px;grid-template-areas:"head photo" "claude photo" "buy get"}
+.nm .bn-title{font-size:20px}
+.nm .t1{font-size:89px}
+.nm .t2{font-size:55px}
+.nm .t3{font-size:34px}
+.nm .bn-logo{width:72px;height:72px}
+.nm .hero{grid-template-columns:minmax(0,1.618fr) minmax(0,1fr);gap:89px}
+.nm .g2{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
+.nm .g3{grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}
+.nm .g4{grid-template-columns:repeat(4,minmax(0,1fr));gap:21px}
+.nm .slots{grid-template-columns:repeat(4,minmax(0,1fr))}
+.nm .sbar-copy{display:block}
+}
+@keyframes nmRise{from{opacity:0;transform:translateY(21px)}to{opacity:1;transform:none}}
+@keyframes nmFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes nmShine{0%{transform:translateX(-120%) skewX(-20deg)}55%,100%{transform:translateX(260%) skewX(-20deg)}}
+@keyframes nmPulse{0%{box-shadow:0 0 0 0 rgba(29,78,216,.5)}100%{box-shadow:0 0 0 10px rgba(29,78,216,0)}}
+@keyframes nmMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes nmReveal{from{transform:translateY(34px)}to{transform:none}}
+.nm .rise{animation:nmRise .8s cubic-bezier(.2,.7,.2,1) both}
+.nm .d1{animation-delay:.08s}.nm .d2{animation-delay:.21s}.nm .d3{animation-delay:.34s}.nm .d4{animation-delay:.55s}.nm .d5{animation-delay:.89s}
+.nm .float{animation:nmFloat 4.2s ease-in-out infinite}
+.nm .pulse{animation:nmPulse 1.6s ease-out infinite}
+.nm .cta{position:relative;overflow:hidden}
+.nm .cta::after{content:"";position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.45),rgba(255,255,255,0));animation:nmShine 3.4s ease-in-out infinite;pointer-events:none}
+.nm .marquee{display:flex;width:max-content;animation:nmMarquee 21s linear infinite}
+@supports (animation-timeline:view()){.nm .sec > *{animation:nmReveal linear both;animation-timeline:view();animation-range:entry 0% entry 80%}}
+@media (prefers-reduced-motion:reduce){.nm .cta{transition:none}.nm .rise,.nm .float,.nm .pulse,.nm .marquee,.nm .cta::after,.nm .sec > *{animation:none}}
+</style>
+</helmet>
+<div class="nm" style="background: #D9DCE2; color: #0E1013; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.55; min-height: 100vh; position: relative">
+
+<!-- Offer strip -->
+<div style="position: sticky; top: 0; z-index: 30">
+<div style="background: #0E1013; color: #F4F5F7; padding: 10px 16px; font-size: 13px; font-weight: 600; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 12px; text-align: center">
+<span style="background: {{cta}}; color: #0E1013; border-radius: 6px; padding: 2px 8px; font-weight: 800">DIWALI OFFER</span>
+<span>Ends in</span>
+<span style="font-variant-numeric: tabular-nums; font-weight: 700">{{cd.d}}d {{cd.h}}h {{cd.m}}m {{cd.s}}s</span>
+</div>
+
+<!-- Header -->
+<div style="background: rgba(217,220,226,.94); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(14,16,19,.06)">
+<div class="wrap" style="display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px">
+<div class="disp" style="font-weight: 800; font-size: 20px">GenZy Club</div>
+<button type="button" class="raised-sm" onClick="{{openSheet}}" style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 8px 14px; background: #F4F5F7; color: #0E1013; min-height: 36px"><span class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #1D4ED8"></span>Free Claude · <span style="color: #1D4ED8">Claim now</span></button>
+</div>
+</div>
+</div>
+
+<!-- Hero -->
+<div class="wrap sec" style="padding-top: 40px">
+<div class="bento">
+
+<div class="stack" style="grid-area: head; justify-content: center; padding: 8px 4px">
+<div class="rise d1" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #FFFFFF; background: #0E1013; border-radius: 6px; padding: 5px 9px">Live webinar</span><span style="font-size: 13px; font-weight: 700; color: #1D4ED8">2 hours · 7–10 Nov · 7–9 PM IST</span></div>
+<div class="rise d1 disp hook" style="font-weight: 600; color: #2F343C; max-width: 460px">I was asleep. My phone kept buzzing with payments.</div>
+<h1 class="disp rise d2" style="margin: 0; font-weight: 800"><span class="t1">₹1.4 lakh.</span><span class="t2">7 days.</span><span class="t3" style="color: #1D4ED8">Fully automated.</span></h1>
+<p class="lead rise d3" style="margin: 0; color: #2F343C; max-width: 560px">Join my 2-hour live webinar and learn to build and sell your own digital product on autopilot. I'll set up the exact system that made me ₹1.4L, step by step. No inventory. No team. No code.</p>
+</div>
+
+<div class="rise d2" style="grid-area: photo; align-self: center; position: relative; padding: 0 0 21px 0">
+<div class="raised" style="aspect-ratio: 3 / 4; border-radius: 28px; background: #F4F5F7; padding: 12px; display: flex">
+<div class="inset" style="flex: 1; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 20px; color: #2F343C">
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+<div style="font-weight: 700; color: #0E1013">Hero portrait</div>
+<div style="font-size: 13px">Sandeep at desk · 3:4 · 1200×1600</div>
+</div>
+</div>
+<div class="raised float" style="position: absolute; left: -12px; bottom: 0; background: #F4F5F7; border-radius: 18px; padding: 14px 18px; display: flex; align-items: center; gap: 14px">
+<span style="flex: none; width: 40px; height: 40px; border-radius: 50%; background: #1D4ED8; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span>
+<div style="line-height: 1.15"><div class="disp" style="font-weight: 800; font-size: 26px; font-variant-numeric: tabular-nums">₹{{count}}</div><div style="font-size: 13px; color: #2F343C; font-weight: 600">in 7 days · fully automated</div></div>
+</div>
+</div>
+
+<div class="rise d3 d-raised" style="grid-area: claude; border-radius: 24px; background: #0E1013; color: #F4F5F7; padding: 18px; display: flex; align-items: center; gap: 16px">
+<div class="bn-logo" style="flex: none; border-radius: 14px; background: {{cta}}; display: flex; align-items: center; justify-content: center"><div style="width: 44px; height: 44px; border-radius: 10px; border: 1.5px dashed #0E1013; color: #0E1013; font-size: 10px; font-weight: 700; line-height: 1.1; display: flex; align-items: center; justify-content: center; text-align: center">Claude logo</div></div>
+<div style="display: flex; flex-direction: column; gap: 3px"><div class="disp bn-title" style="font-weight: 800; line-height: 1.2"><span style="white-space: nowrap">FREE Claude subscription</span><br><span style="color: #9DB8FF">worth ₹2,000</span></div></div>
+</div>
+
+<div class="rise d4 raised" style="grid-area: get; border-radius: 24px; background: #F4F5F7; padding: 8px 20px">
+<div style="font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #474D57; padding: 12px 0 4px">What you get for ₹499</div>
+<div style="display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid #DDE0E5"><svg style="flex: none; margin-top: 2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg><span><strong>1 live webinar seat</strong><br><span style="font-size: 14px; color: #2F343C">Pick 7, 8, 9 or 10 Nov · 7–9 PM IST</span></span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid #DDE0E5"><svg style="flex: none; margin-top: 2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg><span><strong>The full system + live Q&amp;A</strong><br><span style="font-size: 14px; color: #2F343C">Idea, AI creation, store, payments, auto delivery, traffic</span></span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start; padding: 10px 0 14px"><svg style="flex: none; margin-top: 2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18"/></svg><span><strong>FREE Claude subscription worth ₹2,000</strong><br><span style="font-size: 14px; color: #2F343C">For every full live attendee, plus a landing page template</span></span></div>
+</div>
+
+<div class="rise d5 raised" style="grid-area: buy; border-radius: 24px; background: #F4F5F7; padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 16px">
+<div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap">
+<span class="disp price-xl" style="font-weight: 800; line-height: 1">₹499</span>
+<span style="font-size: 18px; color: #474D57; text-decoration: line-through">₹2,499</span>
+<span style="font-size: 12px; font-weight: 700; color: #FFFFFF; background: #1D4ED8; border-radius: 6px; padding: 4px 8px">Save 80% · till 10 Nov</span>
+</div>
+<button type="button" class="cta raised" onClick="{{openSheet}}" style="height: 60px; border: 0; border-radius: 16px; background: {{cta}}; color: #0E1013; font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px">Book my webinar seat · ₹499<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; font-size: 13px; color: #2F343C">
+<span style="display: inline-flex; align-items: center; gap: 6px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0E1013" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Secure payment by Razorpay · UPI · Cards</span>
+<span>Pick your date next</span>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- Marquee -->
+<div style="background: #0E1013; color: #F4F5F7; overflow: hidden; padding: 16px 0" aria-label="No inventory, no team, no code, runs 24/7, ₹499 till 10 Nov">
+<div class="marquee" aria-hidden="true">
+<sc-for list="{{ticker}}" as="t" hint-placeholder-count="12">
+<span class="disp" style="display: inline-flex; align-items: center; gap: 21px; padding: 0 21px; font-size: 21px; font-weight: 800; white-space: nowrap">{{t}}<span style="width: 8px; height: 8px; border-radius: 50%; background: {{cta}}"></span></span>
+</sc-for>
+</div>
+</div>
+
+<!-- Proof -->
+<div class="wrap sec" style="padding-top: 0">
+<div class="raised" style="border-radius: 32px; background: #F4F5F7; padding: 34px 21px; display: flex; flex-direction: column; gap: 26px; align-items: center; text-align: center">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .12em; color: #1D4ED8">PROOF</div>
+<h2 class="disp h2" style="margin: 0; font-weight: 800; max-width: 680px">Real dashboard !<br>&nbsp;Real numbers !</h2>
+<div class="inset" style="width: 100%; max-width: 820px; aspect-ratio: 16 / 9; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px; color: #2F343C">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"></path><path d="M7 15l4-4 3 3 5-6"></path></svg>
+<div style="font-weight: 700; color: #0E1013">Razorpay dashboard screenshot</div>
+<div style="font-size: 13px">Customer details blurred</div>
+</div>
+<div class="g3" style="width: 100%; max-width: 820px">
+<div class="raised-sm" style="border-radius: 18px; padding: 18px; background: #F4F5F7"><div class="disp" style="font-size: 30px; font-weight: 800">₹1.4L</div><div style="font-size: 14px; color: #2F343C">revenue</div></div>
+<div class="raised-sm" style="border-radius: 18px; padding: 18px; background: #F4F5F7"><div class="disp" style="font-size: 30px; font-weight: 800">7 days</div><div style="font-size: 14px; color: #2F343C">from launch</div></div>
+<div class="raised-sm" style="border-radius: 18px; padding: 18px; background: #F4F5F7"><div class="disp" style="font-size: 30px; font-weight: 800">1 ebook</div><div style="font-size: 14px; color: #2F343C">the only product</div></div>
+</div>
+<p style="margin: 0; font-size: 12px; color: #474D57">My personal result. Results vary. This is education, not an income guarantee.</p>
+</div>
+</div>
+
+<!-- System -->
+<div class="wrap sec" style="padding-top: 0; display: flex; flex-direction: column; gap: 30px">
+<h2 class="disp h2" style="margin: 0; font-weight: 800">Set it up once.<br><span style="color: #1D4ED8">It sells every day.</span></h2>
+<div class="g4">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
+<div class="raised" style="border-radius: 22px; padding: 22px; background: #F4F5F7; display: flex; flex-direction: column; gap: 12px">
+<span class="inset disp" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #1D4ED8">{{s.n}}</span>
+<span class="disp" style="font-size: 20px; font-weight: 800">{{s.title}}</span>
+<span style="color: #2F343C; font-size: 15px">{{s.body}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<!-- Learn -->
+<div class="wrap sec" style="padding-top: 0; display: flex; flex-direction: column; gap: 30px">
+<h2 class="disp h2" style="margin: 0; font-weight: 800">Most people learn AI.<br><span style="color: #1D4ED8">You'll earn with it.</span></h2>
+<div class="g2">
+<sc-for list="{{learn}}" as="l" hint-placeholder-count="6">
+<div class="raised-sm" style="display: flex; gap: 14px; align-items: center; border-radius: 16px; padding: 16px 18px; background: #F4F5F7">
+<svg style="flex: none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>
+<span style="font-weight: 500">{{l}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<!-- Fit -->
+<div class="wrap sec" style="padding-top: 0">
+<div class="g2">
+<div class="raised" style="border-radius: 24px; padding: 24px; background: #F4F5F7; display: flex; flex-direction: column; gap: 14px">
+<div class="disp" style="font-size: 20px; font-weight: 800">For you if you're</div>
+<sc-for list="{{forYes}}" as="y" hint-placeholder-count="3">
+<div style="display: flex; gap: 10px; align-items: flex-start"><svg style="flex: none; margin-top: 3px" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg><span>{{y}}</span></div>
+</sc-for>
+</div>
+<div class="inset" style="border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<div class="disp" style="font-size: 20px; font-weight: 800">Not for you if you want</div>
+<sc-for list="{{forNo}}" as="n" hint-placeholder-count="2">
+<div style="display: flex; gap: 10px; align-items: flex-start; color: #2F343C"><svg style="flex: none; margin-top: 3px" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F343C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>{{n}}</span></div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<!-- Host -->
+<div class="wrap sec" style="padding-top: 0">
+<div class="raised g2" style="border-radius: 32px; padding: 20px; background: #F4F5F7; align-items: center">
+<div class="inset" style="aspect-ratio: 1 / 1; border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #2F343C; text-align: center">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+<div style="font-weight: 700; color: #0E1013">Host photo</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 6px">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .12em; color: #1D4ED8">YOUR HOST</div>
+<h2 class="disp h2" style="margin: 0; font-weight: 800">Sandeep Padhy</h2>
+<p style="margin: 0; color: #2F343C">I wrote one ebook on getting the most out of Claude. I set up a fully automated store, ran Meta ads, and made ₹1.4 lakh in 7 days.</p>
+<p style="margin: 0; color: #2F343C">In this session I rebuild that system live and answer your questions.</p>
+</div>
+</div>
+</div>
+
+<!-- Bonuses -->
+<div class="wrap sec" style="padding-top: 0; display: flex; flex-direction: column; gap: 30px">
+<h2 class="disp h2" style="margin: 0; font-weight: 800">Pay ₹499.<br><span style="color: #1D4ED8">Get ₹2,000 back.</span></h2>
+<div class="d-raised" style="border-radius: 32px; background: #0E1013; color: #F4F5F7; padding: 34px 24px; display: flex; flex-direction: column; gap: 18px">
+<span style="align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: .06em; background: {{cta}}; color: #0E1013; border-radius: 6px; padding: 4px 9px">FOR EVERY ATTENDEE</span>
+<div class="disp h2" style="font-weight: 800">Free Claude subscription</div>
+<div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap"><span class="disp price-xl" style="font-weight: 800; line-height: 1; color: #9DB8FF">₹2,000</span><span style="font-size: 16px; color: #C9CDD4">value, yours free</span></div>
+<div style="font-size: 17px; color: #E4E6EA; max-width: 560px">The webinar costs ₹499. The subscription alone is worth 4× that. Use it to build your product with AI right after the session.</div>
+<div style="font-size: 12px; color: #A9AEB8">Given to every attendee who stays for the full live session and follows the claim steps shared at the end. GenZy Club is not affiliated with Anthropic.</div>
+</div>
+<div class="g2">
+<div class="raised" style="border-radius: 24px; padding: 24px; background: #F4F5F7; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; font-size: 12px; font-weight: 800; background: {{cta}}; color: #0E1013; border-radius: 6px; padding: 3px 8px">BONUS 1</span>
+<div class="disp" style="font-size: 22px; font-weight: 800">Landing page template</div>
+<div style="color: #2F343C">The page structure I use to sell. Add your product and go live.</div>
+</div>
+<div class="raised" style="border-radius: 24px; padding: 24px; background: #F4F5F7; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; font-size: 12px; font-weight: 800; background: #1D4ED8; color: #FFFFFF; border-radius: 6px; padding: 3px 8px">HOW TO CLAIM</span>
+<div class="disp" style="font-size: 22px; font-weight: 800">3 steps to your free subscription</div>
+<div style="color: #2F343C"><strong style="color: #0E1013">1.</strong> Book your seat for ₹499<br><strong style="color: #0E1013">2.</strong> Attend the full live session<br><strong style="color: #0E1013">3.</strong> Follow the claim steps at the end</div>
+</div>
+</div>
+</div>
+
+<!-- Offer + slots -->
+<div class="wrap sec" style="padding-top: 0">
+<div class="raised" style="max-width: 720px; margin: 0 auto; border-radius: 32px; padding: 34px 21px; background: #F4F5F7; display: flex; flex-direction: column; gap: 24px">
+<h2 class="disp h2" style="margin: 0; font-weight: 800; text-align: center">Everything for ₹499</h2>
+<div style="align-self: center; text-align: center; font-size: 14px; font-weight: 700; color: #FFFFFF; background: #1D4ED8; border-radius: 999px; padding: 8px 16px">Includes a ₹2,000 Claude subscription, free</div>
+<div class="inset" style="border-radius: 20px; padding: 6px 18px">
+<sc-for list="{{stack}}" as="it" hint-placeholder-count="6">
+<div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #D3D6DC">
+<svg style="flex: none; margin-top: 4px" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg><span>{{it}}</span>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; align-items: baseline; justify-content: center; gap: 12px">
+<span style="font-size: 22px; color: #474D57; text-decoration: line-through">₹2,499</span>
+<span class="disp price-xl" style="font-weight: 800; line-height: 1">₹499</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-weight: 700">Choose your date <span style="font-weight: 400; color: #2F343C; font-size: 14px">· 7–9 PM IST</span></div>
+<div class="slots">
+<sc-for list="{{slots}}" as="sl" hint-placeholder-count="4">
+<button type="button" class="{{sl.cls}}" onClick="{{sl.pick}}" disabled="{{sl.closed}}" aria-pressed="{{sl.selected}}" style="{{sl.style}}">
+<span style="display: block; font-size: 13px; font-weight: 600; color: #2F343C">{{sl.day}}</span>
+<span class="disp" style="display: block; font-size: 20px; font-weight: 800">{{sl.date}}</span>
+<span style="display: block; font-size: 12px; margin-top: 2px; font-weight: 600; color: {{sl.noteColor}}">{{sl.note}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+
+<button type="button" class="cta raised" onClick="{{openSheet}}" style="height: 60px; border: 0; border-radius: 16px; background: {{cta}}; color: #0E1013; font-size: 18px; font-weight: 800">Book {{slotLabel}} · ₹499</button>
+<div style="font-size: 13px; color: #2F343C; text-align: center">WhatsApp group link right after payment. No refunds.</div>
+</div>
+</div>
+
+<!-- FAQ -->
+<div class="wrap sec" style="padding-top: 0; max-width: 760px; display: flex; flex-direction: column; gap: 24px">
+<h2 class="disp h2" style="margin: 0; font-weight: 800">FAQ</h2>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<sc-for list="{{faqs}}" as="f" hint-placeholder-count="6">
+<div class="{{f.cls}}" style="border-radius: 18px; background: #F4F5F7">
+<button type="button" onClick="{{f.toggle}}" aria-expanded="{{f.open}}" style="width: 100%; background: transparent; border: 0; color: #0E1013; text-align: left; padding: 18px 20px; font-size: 16px; font-weight: 600; display: flex; justify-content: space-between; gap: 12px; align-items: center; min-height: 58px">
+<span>{{f.q}}</span>
+<svg style="{{f.chev}}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{f.open}}" hint-placeholder-val="{{false}}">
+<div style="padding: 0 20px 18px; color: #2F343C; font-size: 15px">{{f.a}}</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+
+<!-- Final CTA -->
+<div class="wrap sec" style="padding-top: 0">
+<div class="d-raised" style="border-radius: 32px; background: #16181D; color: #F4F5F7; padding: 40px 22px; text-align: center; display: flex; flex-direction: column; gap: 16px; align-items: center">
+<h2 class="disp h2" style="margin: 0; font-weight: 800">Light more than diyas<br>this Diwali.</h2>
+<div style="font-size: 18px; color: #F4F5F7; font-weight: 600">Two hours this week can change your next twelve months.</div>
+<div style="color: #C9CDD4">₹499 until 10 Nov, with a ₹2,000 Claude subscription free. Then ₹2,499.</div>
+<div style="font-variant-numeric: tabular-nums; font-size: 22px; font-weight: 700">{{cd.d}}d {{cd.h}}h {{cd.m}}m {{cd.s}}s</div>
+<button type="button" class="cta" onClick="{{openSheet}}" style="height: 60px; width: 100%; max-width: 400px; border: 0; border-radius: 16px; background: {{cta}}; color: #0E1013; font-size: 18px; font-weight: 800">Book my seat · ₹499</button>
+</div>
+</div>
+
+<!-- Footer -->
+<div style="padding: 24px 0 120px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 12px; font-size: 13px; color: #2F343C">
+<div style="display: flex; flex-wrap: wrap; gap: 8px 20px">
+<a href="#terms">Terms</a><a href="#privacy">Privacy</a><a href="#refund">Refund policy</a><a href="#contact">Contact</a><a href="mailto:genzyclub.com@gmail.com">genzyclub.com@gmail.com</a>
+</div>
+<p style="margin: 0">₹1.4L in 7 days is my personal result. Results vary. This is education, not an income guarantee. The free subscription goes only to full live attendees who complete the process shared at the end. GenZy Club is not affiliated with Anthropic or Meta.</p>
+<p style="margin: 0">© 2026 GenZy Club · genzyclub.tech</p>
+</div>
+</div>
+
+<!-- Sticky bar -->
+<div style="position: sticky; bottom: 0; z-index: 20; background: rgba(244,245,247,.97); backdrop-filter: blur(10px); border-top: 1px solid #D3D6DC; padding: 12px 24px">
+<div style="max-width: 1080px; margin: 0 auto; display: flex; align-items: center; gap: 12px">
+<div style="flex: none; line-height: 1.15">
+<div><span class="disp" style="font-size: 22px; font-weight: 800">₹499</span> <span style="font-size: 13px; color: #474D57; text-decoration: line-through">₹2,499</span></div>
+<div style="font-size: 12px; color: #1D4ED8; font-weight: 700; font-variant-numeric: tabular-nums">Ends in {{cd.d}}d {{cd.h}}h</div>
+</div>
+<div class="sbar-copy" style="flex: 1; font-size: 14px; color: #2F343C"><strong style="color: #0E1013">+ Free Claude subscription worth ₹2,000</strong> · Live 7–10 Nov, 7–9 PM IST</div>
+<button type="button" class="cta raised-sm" onClick="{{openSheet}}" style="flex: 1; max-width: 300px; margin-left: auto; height: 52px; border: 0; border-radius: 14px; background: {{cta}}; color: #0E1013; font-size: 16px; font-weight: 800">Book my seat</button>
+</div>
+</div>
+
+<!-- Checkout sheet -->
+<sc-if value="{{sheet}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 50; background: rgba(14,16,19,.55); display: flex; align-items: flex-end; justify-content: center">
+<div role="dialog" aria-modal="true" aria-label="Book your seat" style="width: 100%; max-width: 460px; max-height: 92vh; overflow-y: auto; background: #F4F5F7; border-radius: 28px 28px 0 0; padding: 12px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="width: 44px; height: 5px; border-radius: 3px; background: #B9BDC5; margin: 0 auto" aria-hidden="true"></div>
+<div style="display: flex; justify-content: space-between; align-items: center">
+<div class="disp" style="font-size: 22px; font-weight: 800">Book your seat</div>
+<button type="button" class="raised-sm" onClick="{{closeSheet}}" aria-label="Close" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #F4F5F7; color: #0E1013; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+
+<sc-if value="{{paid}}" hint-placeholder-val="{{false}}">
+<div class="inset" style="border-radius: 14px; padding: 14px 16px; font-size: 14px; color: #0E1013"><strong style="color: #1D4ED8">Razorpay opens here.</strong> After payment: thank-you page with the WhatsApp link.</div>
+</sc-if>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 14px; font-weight: 600">Date · 7–9 PM IST</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{slots}}" as="sl" hint-placeholder-count="4">
+<button type="button" class="{{sl.cls}}" onClick="{{sl.pick}}" disabled="{{sl.closed}}" aria-pressed="{{sl.selected}}" style="{{sl.chip}}"><span style="display: block; font-size: 11px; color: #2F343C">{{sl.day}}</span><span style="display: block; font-weight: 800">{{sl.date}}</span></button>
+</sc-for>
+</div>
+</div>
+
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Full name
+<input class="inset" type="text" autocomplete="name" placeholder="Your name" style="height: 52px; border-radius: 14px; border: 0; background: #F4F5F7; color: #0E1013; padding: 0 16px; font-size: 16px; font-family: inherit">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">WhatsApp number
+<span class="inset" style="display: flex; height: 52px; border-radius: 14px; overflow: hidden">
+<span style="display: flex; align-items: center; padding: 0 14px; color: #2F343C; font-weight: 600; border-right: 1px solid #C9CDD4">+91</span>
+<input type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" placeholder="10-digit number" style="flex: 1; min-width: 0; border: 0; background: transparent; color: #0E1013; padding: 0 14px; font-size: 16px; font-family: inherit">
+</span>
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Email
+<input class="inset" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" style="height: 52px; border-radius: 14px; border: 0; background: #F4F5F7; color: #0E1013; padding: 0 16px; font-size: 16px; font-family: inherit">
+</label>
+
+<button type="button" class="cta raised" onClick="{{pay}}" style="height: 58px; border: 0; border-radius: 16px; background: {{cta}}; color: #0E1013; font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Pay ₹499 securely</button>
+<div style="text-align: center; font-size: 12px; color: #2F343C">UPI, cards or netbanking via Razorpay. ₹499 is the final amount. No refunds.</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"cta":{"editor":"color","default":"#F27321","options":["#F27321","#1D4ED8","#0E1013"],"section":"Brand"},"$preview":{"width":1280,"height":6400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { now: Date.now(), slot: null, sheet: false, paid: false, open: 0 };
+  }
+  componentDidMount() {
+    this.timer = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    const t0 = performance.now();
+    const step = (t) => {
+      const p = Math.min(1, (t - t0) / 1600);
+      const eased = 1 - Math.pow(1 - p, 3);
+      this.setState({ count: Math.round(140000 * eased) });
+      if (p < 1) this.raf = requestAnimationFrame(step);
+    };
+    this.raf = requestAnimationFrame(step);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    cancelAnimationFrame(this.raf);
+  }
+  pad(n) { return String(n).padStart(2, '0'); }
+  split(ms) {
+    const t = Math.max(0, Math.floor(ms / 1000));
+    return { d: this.pad(Math.floor(t / 86400)), h: this.pad(Math.floor(t % 86400 / 3600)), m: this.pad(Math.floor(t % 3600 / 60)), s: this.pad(t % 60) };
+  }
+  renderVals() {
+    const st = this.state || {};
+    const now = st.now || Date.now();
+    const cta = this.props.cta ?? '#F27321';
+    const offerEnd = Date.parse('2026-11-10T23:59:59+05:30');
+    const raw = [
+      { id: 's7', day: 'Sat', date: '7 Nov', start: '2026-11-07T19:00:00+05:30' },
+      { id: 's8', day: 'Sun', date: '8 Nov', start: '2026-11-08T19:00:00+05:30' },
+      { id: 's9', day: 'Mon', date: '9 Nov', start: '2026-11-09T19:00:00+05:30' },
+      { id: 's10', day: 'Tue', date: '10 Nov', start: '2026-11-10T19:00:00+05:30' }
+    ];
+    const openOnes = raw.filter((r) => Date.parse(r.start) > now);
+    const firstOpen = openOnes[0];
+    const selectedId = st.slot && openOnes.some((r) => r.id === st.slot) ? st.slot : (firstOpen ? firstOpen.id : null);
+    const slots = raw.map((r) => {
+      const closed = Date.parse(r.start) <= now;
+      const selected = r.id === selectedId;
+      const base = 'border: ' + (selected ? '2px solid #1D4ED8' : '2px solid transparent') + '; background: #F4F5F7; color: #0E1013; border-radius: 16px; opacity: ' + (closed ? '0.45' : '1') + '; cursor: ' + (closed ? 'not-allowed' : 'pointer') + ';';
+      return {
+        ...r, closed, selected,
+        cls: selected ? 'inset' : 'raised-sm',
+        note: closed ? 'Closed' : (selected ? 'Selected' : 'Open'),
+        noteColor: selected ? '#1D4ED8' : '#2F343C',
+        style: base + ' padding: 14px; min-height: 84px; text-align: left;',
+        chip: base + ' padding: 8px 4px; min-height: 54px; text-align: center; font-size: 15px;',
+        pick: () => { if (!closed) this.setState({ slot: r.id }); }
+      };
+    });
+    const sel = raw.find((r) => r.id === selectedId);
+    const faqRaw = [
+      ['Where is the webinar?', 'Live on webinar.gg. You get the WhatsApp group link right after payment. The join link comes on WhatsApp and email before your session.'],
+      ['How do I get the free Claude subscription?', 'Book a seat, attend the full live session, and follow the claim steps I share at the end. It is worth ₹2,000 and free for every full attendee.'],
+      ['Do I need experience?', 'No. Everything starts from zero.'],
+      ['Do I need a laptop?', 'You can watch on your phone. A laptop helps when you build the system later.'],
+      ['Is there a recording?', 'Yes. The free Claude subscription bonus is only for people who attend the full session live.'],
+      ['Is payment safe?', 'Yes. Payments go through Razorpay: UPI, cards and netbanking. We never see your card details.'],
+      ['Can I get a refund?', 'No refunds, so pick your date carefully. If we cancel a session, you can switch dates for free or get a refund.'],
+      ['Is income guaranteed?', 'No. ₹1.4L in 7 days is my personal result. Yours depends on your work.']
+    ];
+    const openIdx = st.open;
+    const faqs = faqRaw.map((f, i) => ({
+      q: f[0], a: f[1], open: openIdx === i,
+      cls: openIdx === i ? 'inset' : 'raised-sm',
+      chev: 'flex: none; transition: transform .2s ease; transform: rotate(' + (openIdx === i ? '180' : '0') + 'deg)',
+      toggle: () => this.setState({ open: openIdx === i ? -1 : i })
+    }));
+    const tick = ['Free Claude subscription worth ₹2,000', 'No inventory', 'No team', 'No code', 'Runs 24/7', 'Live in Hinglish', '₹499 till 10 Nov'];
+    return {
+      cta,
+      count: (typeof st.count === 'number' ? st.count : 140000).toLocaleString('en-IN'),
+      ticker: tick.concat(tick),
+      cd: this.split(offerEnd - now),
+      slots,
+      slotLabel: sel ? sel.date : 'my seat',
+      sheet: !!st.sheet,
+      paid: !!st.paid,
+      openSheet: () => this.setState({ sheet: true, paid: false }),
+      closeSheet: () => this.setState({ sheet: false, paid: false }),
+      pay: () => this.setState({ paid: true }),
+      steps: [
+        { n: '1', title: 'Idea', body: 'Pick a product people already pay for.' },
+        { n: '2', title: 'Create', body: 'Build it with AI in a day.' },
+        { n: '3', title: 'Automate', body: 'Store, payment and delivery run on their own.' },
+        { n: '4', title: 'Sell', body: 'Bring buyers with ads and organic content.' }
+      ],
+      learn: [
+        'Digital product ideas that actually sell',
+        'Building your product with AI in one day',
+        'Store, payments and instant delivery setup',
+        'Getting traffic from Meta ads and organic',
+        'Automations that sell while you sleep',
+        'My exact 7-day, ₹1.4L launch breakdown'
+      ],
+      forYes: [
+        'A student who wants a first online income',
+        'Working and want a side income',
+        'A creator with followers but no product'
+      ],
+      forNo: [
+        'Money without doing the work',
+        'A recording only, with no live attendance'
+      ],
+      stack: [
+        '2-hour live webinar with Sandeep',
+        'The complete automated product system',
+        'Live Q&A',
+        'WhatsApp community access, instantly',
+        'Landing page template (bonus)',
+        'FREE Claude subscription worth ₹2,000 (every full attendee)',
+        'Session recording'
+      ],
+      faqs
+    };
+  }
+}
+</script>
+</body>
+</html>

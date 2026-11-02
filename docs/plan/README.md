@@ -1,6 +1,6 @@
 # GenZy Club Webinar Landing Page: Master Plan
 
-**Status:** Planning (no code yet) · **Last updated:** 1 Nov 2026
+**Status:** Plan final, build spec in [../architecture/](../architecture/README.md) · **Last updated:** 2 Nov 2026
 **Brand:** GenZy Club · **Theme:** "Is Diwali, apni life badlo" · **Domain:** genzyclub.tech · **Hosting:** Hostinger KVM 1 VPS · **Payments:** Razorpay only
 **Repo (for build phase):** https://github.com/SANDEEP-PADHY/great-landing-page
 
