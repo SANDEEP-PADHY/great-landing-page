@@ -8,7 +8,8 @@ import { SLOT_IDS } from '@/lib/contracts';
 import { requireAdmin } from '@/lib/auth/session';
 import { db } from '@/lib/db/client';
 import { orders } from '@/lib/db/schema';
-import { changeOrderSlot, resendConfirmation } from '@/lib/orders';
+import { resendConfirmation } from '@/lib/email/send';
+import { changeOrderSlot } from '@/lib/orders';
 
 const Id = z.string().uuid();
 

@@ -1,6 +1,6 @@
 // Admin read queries (orders, buyers, abandoned, slots, emails). [WS3]
 import 'server-only';
-import { and, count, desc, eq, gte, ilike, inArray, lt, lte, or, sql, sum, type SQL } from 'drizzle-orm';
+import { and, count, desc, eq, ilike, inArray, lt, or, sql, sum, type SQL } from 'drizzle-orm';
 import { db } from '@/lib/db/client';
 import { customers, emailLog, orders, slots, visitors } from '@/lib/db/schema';
 import { first, resolveRange } from './time';

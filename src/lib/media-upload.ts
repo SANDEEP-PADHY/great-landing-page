@@ -8,13 +8,14 @@ import { eq } from 'drizzle-orm';
 import sharp from 'sharp';
 import { db } from '@/lib/db/client';
 import { media } from '@/lib/db/schema';
+import { env } from '@/lib/env';
 import type { MediaKey, MediaView } from '@/lib/contracts';
 import { FILE_EXTS, IMAGE_MIMES, MAX_FILE_BYTES, MAX_IMAGE_BYTES, MEDIA_SPECS } from '@/lib/admin/media-specs';
 
 export class UploadError extends Error {}
 
-const uploadDir = () => process.env.UPLOAD_DIR ?? path.join(process.cwd(), 'uploads');
-const privateDir = () => process.env.PRIVATE_DIR ?? path.join(process.cwd(), 'private');
+const uploadDir = () => path.resolve(env().UPLOAD_DIR);
+const privateDir = () => path.resolve(env().PRIVATE_DIR);
 const safe = (name: string) => path.basename(name).replace(/[^a-zA-Z0-9._-]/g, '_');
 
 async function removeFiles(dir: string, names: string[]) {
