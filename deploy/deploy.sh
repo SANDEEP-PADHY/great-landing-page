@@ -3,6 +3,7 @@
 set -euo pipefail
 cd /var/www/genzyclub/app
 git fetch origin && git reset --hard "origin/${BRANCH:-main}"
+export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 export COMMIT_SHA=$(git rev-parse --short HEAD)
 pnpm install --frozen-lockfile
 pnpm db:migrate

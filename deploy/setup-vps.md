@@ -1,25 +1,28 @@
-# VPS setup: Hostinger KVM 1 (Ubuntu 24.04) for genzyclub.tech
+# VPS setup: Hostinger KVM 1 (Ubuntu 26.04) for genzyclub.tech
 
 Run as root first, then as the `deploy` user where noted. Replace `<...>` values.
+
+The current server also runs another Docker/Caddy app that owns ports 80/443. Check `ss -tlnp` before
+installing nginx; if something else holds 80/443, front genzyclub.tech through that proxy instead.
 
 ## 1. Users and SSH
 ```bash
 adduser deploy && usermod -aG sudo deploy
 mkdir -p /home/deploy/.ssh && cp ~/.ssh/authorized_keys /home/deploy/.ssh/ && chown -R deploy:deploy /home/deploy/.ssh
-sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication no/; s/^#\?PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
-systemctl restart ssh
+printf 'PasswordAuthentication no\nPermitRootLogin no\n' > /etc/ssh/sshd_config.d/00-hardening.conf
+sshd -t && systemctl restart ssh
 ```
+The drop-in must sort before `50-cloud-init.conf`, which sets `PasswordAuthentication yes` (sshd keeps the first value it reads).
 Check you can log in as `deploy` in a second terminal before closing the root session.
 
 ## 2. Firewall, swap, packages
 ```bash
 ufw allow 22,80,443/tcp && ufw --force enable
 fallocate -l 2G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile && echo '/swapfile none swap sw 0 0' >> /etc/fstab
-curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
-apt update && apt install -y nodejs nginx postgresql postgresql-contrib fail2ban unattended-upgrades git rclone
-corepack enable && npm i -g pm2
+apt update && apt install -y nodejs npm nginx postgresql postgresql-contrib fail2ban unattended-upgrades git rclone
+npm i -g corepack pm2 && corepack enable
 ```
-(Ubuntu 24.04 ships PostgreSQL 16.)
+(Ubuntu 26.04 ships Node 22 and PostgreSQL 18, so NodeSource is not needed. Its nodejs package has no corepack.)
 
 ## 3. Postgres (local only)
 ```bash
@@ -39,7 +42,7 @@ cd /var/www/genzyclub && git clone https://github.com/SANDEEP-PADHY/great-landin
 git checkout <branch>
 cp .env.example .env && nano .env      # fill every value; APP_SECRET and ADMIN_JWT_SECRET: openssl rand -hex 32
 BRANCH=<branch> bash deploy/deploy.sh   # install, migrate, seed, build, start PM2
-pm2 startup systemd -u deploy --hp /home/deploy   # run the printed sudo command
+pm2 startup systemd -u deploy --hp /home/deploy   # run the printed command as root
 pm2 install pm2-logrotate && pm2 set pm2-logrotate:max_size 10M && pm2 set pm2-logrotate:retain 7
 ```
 
