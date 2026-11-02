@@ -73,12 +73,12 @@ export async function getDailySeries(r: DateRange) {
   const rows = await q<{ day: string; revenue: string; sales: string; visitors: string }>(sql`
     with d as (select generate_series(
         (${r.from.toISOString()}::timestamptz at time zone ${sql.raw(TZ)})::date,
-        ((${r.to.toISOString()}::timestamptz - interval '1 second') at time zone ${sql.raw(TZ)})::date, interval '1 day')::date day),
-    s as (select (o.paid_at at time zone ${sql.raw(TZ)})::date day, count(*) sales, sum(o.amount_paise) revenue
+        ((${r.to.toISOString()}::timestamptz - interval '1 second') at time zone ${sql.raw(TZ)})::date, interval '1 day')::date as day),
+    s as (select (o.paid_at at time zone ${sql.raw(TZ)})::date as day, count(*) sales, sum(o.amount_paise) revenue
           from orders o where ${paidWhere(r)} group by 1),
-    v as (select (e.occurred_at at time zone ${sql.raw(TZ)})::date day, count(distinct e.visitor_id) visitors
+    v as (select (e.occurred_at at time zone ${sql.raw(TZ)})::date as day, count(distinct e.visitor_id) visitors
           from events e where ${evWhere(r)} and e.name='page_view' group by 1)
-    select to_char(d.day,'YYYY-MM-DD') day, coalesce(s.revenue,0) revenue, coalesce(s.sales,0) sales, coalesce(v.visitors,0) visitors
+    select to_char(d.day,'YYYY-MM-DD') as day, coalesce(s.revenue,0) revenue, coalesce(s.sales,0) sales, coalesce(v.visitors,0) visitors
     from d left join s using(day) left join v using(day) order by d.day`);
   return rows.map((x) => ({ day: x.day, revenuePaise: n(x.revenue), sales: n(x.sales), visitors: n(x.visitors) }));
 }
