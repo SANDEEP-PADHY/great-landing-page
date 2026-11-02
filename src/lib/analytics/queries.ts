@@ -151,7 +151,7 @@ export async function getLiveVisitors(minutes = 5) {
 
 export async function getTrafficSources(r: DateRange) {
   const rows = await q<{ source: string; medium: string; visitors: string }>(sql`
-    select coalesce(e.utm_source, case when e.props->>'referrer' is null then '(direct)' else regexp_replace(e.props->>'referrer','^https?://([^/]+).*$','\1') end) source,
+    select coalesce(e.utm_source, case when e.props->>'referrer' is null then '(direct)' else regexp_replace(e.props->>'referrer','^https?://([^/]+).*$','\\1') end) source,
            '' medium, count(distinct e.visitor_id) visitors
     from events e where ${evWhere(r)} and e.name='page_view' group by 1 order by visitors desc limit 25`);
   return rows.map((x) => ({ source: x.source, visitors: n(x.visitors) }));
