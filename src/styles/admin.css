@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #1d4ed8;
+  --color-brand-dark: #1e40af;
+  --color-brand-soft: #eff4ff;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+  --color-surface: #f6f7fb;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.admin-root { background: var(--color-surface); color: var(--color-ink); font-family: var(--font-sans); min-height: 100vh; }
+.admin-root table { border-collapse: collapse; }
+.admin-root ::selection { background: #bfdbfe; }
