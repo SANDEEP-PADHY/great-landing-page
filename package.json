@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@react-email/components": "^0.0.41",
+    "@tailwindcss/postcss": "^4.1.10",
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.44.2",
@@ -28,9 +29,11 @@
     "razorpay": "^2.9.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "recharts": "^2.15.3",
     "resend": "^4.6.0",
     "server-only": "^0.0.1",
     "sharp": "^0.34.2",
+    "tailwindcss": "^4.1.10",
     "web-vitals": "^6.2.3",
     "zod": "^3.25.67"
   },
