@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'genzy-web', cwd: '/var/www/genzyclub/app', script: 'node_modules/next/dist/bin/next',
-      args: 'start -p 3000 -H 127.0.0.1', instances: 1, exec_mode: 'fork', max_memory_restart: '900M',
+      args: 'start -p 3100 -H 0.0.0.0', instances: 1, exec_mode: 'fork', max_memory_restart: '900M',
       env: { NODE_ENV: 'production' },
     },
     {

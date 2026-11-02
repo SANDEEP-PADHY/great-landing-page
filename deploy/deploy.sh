@@ -12,4 +12,4 @@ pm2 startOrReload deploy/ecosystem.config.cjs --update-env
 pm2 restart genzy-worker
 pm2 save
 sleep 3
-curl -fsS http://127.0.0.1:3000/api/health && echo
+curl -fsS http://127.0.0.1:3100/api/health && echo
