@@ -1,0 +1,131 @@
+/* Ported 1:1 from docs/design/landing-page.dc.html <style> block (scoped under .nm),
+   plus classes for the checkout sheet, thank-you, invoice and legal pages. */
+
+body:has(.nm){margin:0;background:#D9DCE2}
+
+.nm{
+  --bg:#D9DCE2;--surface:#F4F5F7;--inset:#E3E6EB;--ink:#0E1013;--ink-2:#2F343C;--ink-3:#474D57;--accent:#1D4ED8;--cta:#F27321;
+  background:var(--bg);color:var(--ink);
+  font-family:var(--font-body),Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;min-height:100vh;position:relative;
+}
+.nm a{color:#1D4ED8}.nm a:hover{color:#1E3A8A}
+.nm *{box-sizing:border-box}
+.nm .wrap{max-width:1080px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}
+.nm .sec{padding-top:72px;padding-bottom:72px}
+.nm .disp{font-family:var(--font-display),'Inter Tight',Inter,system-ui,sans-serif;letter-spacing:-0.03em}
+.nm .h1{font-size:42px;line-height:1.02;font-weight:800}
+.nm .h2{font-size:30px;line-height:1.12;font-weight:800}
+.nm .lead{font-size:17px;line-height:1.6}
+.nm .hook{font-size:18px;line-height:1.35}
+.nm .price-xl{font-size:52px}
+.nm .stack{display:flex;flex-direction:column;gap:24px}
+.nm .bento{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;grid-template-areas:"head" "claude" "buy" "get" "photo"}
+.nm .bn-title{font-size:17px}
+.nm .t1,.nm .t2,.nm .t3{display:block}
+.nm .t1{font-size:55px;line-height:1}
+.nm .t2{font-size:34px;line-height:1.1}
+.nm .t3{font-size:21px;line-height:1.3;letter-spacing:-0.01em}
+.nm .bn-logo{width:56px;height:56px}
+.nm .raised{box-shadow:10px 10px 24px #AEB3BD,-8px -8px 20px #F2F3F6;border:1px solid #FFFFFF}
+.nm .raised-sm{box-shadow:5px 5px 12px #AEB3BD,-4px -4px 10px #F2F3F6;border:1px solid #FFFFFF}
+.nm .inset{background:#E3E6EB !important;box-shadow:inset 4px 4px 10px #BFC4CC,inset -4px -4px 10px #FFFFFF;border:1px solid #CDD1D8}
+.nm .d-raised{box-shadow:12px 12px 28px #9EA3AD,-8px -8px 20px #F2F3F6}
+.nm .hero{display:grid;grid-template-columns:minmax(0,1fr);gap:36px;align-items:center}
+.nm .g2,.nm .g3,.nm .g4{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.nm .slots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.nm button{font-family:inherit;cursor:pointer}
+.nm button:focus-visible,.nm input:focus-visible,.nm a:focus-visible{outline:3px solid #1D4ED8;outline-offset:3px}
+.nm .cta{transition:transform .12s ease, box-shadow .12s ease}
+.nm .cta:active{transform:translateY(1px);box-shadow:inset 3px 3px 8px rgba(0,0,0,.25)}
+.nm .sbar-copy{display:none}
+@media (min-width:900px){
+.nm .wrap{padding-left:40px;padding-right:40px}
+.nm .sec{padding-top:144px;padding-bottom:144px}
+.nm .h1{font-size:89px;line-height:.98}
+.nm .h2{font-size:55px;line-height:1.05}
+.nm .lead{font-size:21px}
+.nm .hook{font-size:21px}
+.nm .price-xl{font-size:68px}
+.nm .stack{gap:34px}
+.nm .bento{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:21px 34px;grid-template-areas:"head photo" "claude photo" "buy get"}
+.nm .bn-title{font-size:20px}
+.nm .t1{font-size:89px}
+.nm .t2{font-size:55px}
+.nm .t3{font-size:34px}
+.nm .bn-logo{width:72px;height:72px}
+.nm .hero{grid-template-columns:minmax(0,1.618fr) minmax(0,1fr);gap:89px}
+.nm .g2{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
+.nm .g3{grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}
+.nm .g4{grid-template-columns:repeat(4,minmax(0,1fr));gap:21px}
+.nm .slots{grid-template-columns:repeat(4,minmax(0,1fr))}
+.nm .sbar-copy{display:block}
+}
+@keyframes nmRise{from{opacity:0;transform:translateY(21px)}to{opacity:1;transform:none}}
+@keyframes nmFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes nmShine{0%{transform:translateX(-120%) skewX(-20deg)}55%,100%{transform:translateX(260%) skewX(-20deg)}}
+@keyframes nmPulse{0%{box-shadow:0 0 0 0 rgba(29,78,216,.5)}100%{box-shadow:0 0 0 10px rgba(29,78,216,0)}}
+@keyframes nmMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes nmReveal{from{transform:translateY(34px)}to{transform:none}}
+@keyframes nmSpin{to{transform:rotate(360deg)}}
+.nm .rise{animation:nmRise .8s cubic-bezier(.2,.7,.2,1) both}
+.nm .d1{animation-delay:.08s}.nm .d2{animation-delay:.21s}.nm .d3{animation-delay:.34s}.nm .d4{animation-delay:.55s}.nm .d5{animation-delay:.89s}
+.nm .float{animation:nmFloat 4.2s ease-in-out infinite}
+.nm .pulse{animation:nmPulse 1.6s ease-out infinite}
+.nm .cta{position:relative;overflow:hidden}
+.nm .cta::after{content:"";position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.45),rgba(255,255,255,0));animation:nmShine 3.4s ease-in-out infinite;pointer-events:none}
+.nm .marquee{display:flex;width:max-content;animation:nmMarquee 21s linear infinite}
+@supports (animation-timeline:view()){.nm .sec > *{animation:nmReveal linear both;animation-timeline:view();animation-range:entry 0% entry 80%}}
+@media (prefers-reduced-motion:reduce){.nm .cta{transition:none}.nm .rise,.nm .float,.nm .pulse,.nm .marquee,.nm .cta::after,.nm .sec > *{animation:none}}
+
+/* ---------- shared pieces used by components ---------- */
+.nm .btn-cta{height:60px;border:0;border-radius:16px;background:var(--cta);color:var(--ink);font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;text-decoration:none}
+.nm .btn-cta[disabled],.nm .btn-cta[aria-disabled="true"]{opacity:.6;cursor:not-allowed}
+.nm .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;color:#1D4ED8}
+.nm .tag{font-size:12px;font-weight:800;border-radius:6px;padding:3px 8px}
+.nm .tnum{font-variant-numeric:tabular-nums}
+.nm .spinner{width:20px;height:20px;border-radius:50%;border:3px solid rgba(14,16,19,.25);border-top-color:#0E1013;animation:nmSpin .8s linear infinite}
+@media (prefers-reduced-motion:reduce){.nm .spinner{animation-duration:2s}}
+.nm .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- checkout sheet ---------- */
+.nm .sheet-backdrop{position:fixed;inset:0;z-index:50;background:rgba(14,16,19,.55);display:flex;align-items:flex-end;justify-content:center}
+.nm .sheet{width:100%;max-width:460px;max-height:92vh;max-height:92dvh;overflow-y:auto;background:#F4F5F7;border-radius:28px 28px 0 0;padding:12px 20px 24px;display:flex;flex-direction:column;gap:16px;overscroll-behavior:contain}
+@media (min-width:900px){.nm .sheet-backdrop{align-items:center}.nm .sheet{border-radius:28px}}
+.nm .field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+.nm .field-input{height:52px;border-radius:14px;border:0;background:#F4F5F7;color:#0E1013;padding:0 16px;font-size:16px;font-family:inherit;width:100%}
+.nm .field-err{font-size:13px;font-weight:600;color:#B42318}
+.nm .field-bad{outline:2px solid #B42318}
+.nm .chip{min-height:54px;padding:8px 4px;border-radius:16px;background:#F4F5F7;color:#0E1013;text-align:center;font-size:15px}
+.nm .chip[disabled]{opacity:.45;cursor:not-allowed}
+.nm .slot-card[disabled]{opacity:.45;cursor:not-allowed}
+
+/* ---------- thank-you / invoice ---------- */
+.nm .page-narrow{max-width:720px;margin:0 auto;padding:32px 20px 64px}
+.nm .btn-secondary{min-height:52px;border-radius:14px;background:#F4F5F7;color:#0E1013;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;text-decoration:none;text-align:center}
+.nm .btn-secondary:hover{color:#0E1013}
+.nm .btn-wa{background:#128C7E;color:#fff}
+.nm .btn-wa:hover{color:#fff}
+.nm .receipt{background:#fff;color:#0E1013;border-radius:16px;padding:32px;border:1px solid #D3D6DC}
+.nm .receipt table{width:100%;border-collapse:collapse;font-size:15px}
+.nm .receipt th{font-weight:600;text-align:left;color:#474D57;padding:10px 0;border-bottom:1px solid #E3E6EB;width:42%;vertical-align:top}
+.nm .receipt td{padding:10px 0;border-bottom:1px solid #E3E6EB;text-align:right;word-break:break-word}
+@media print{
+  body:has(.nm){background:#fff}
+  .nm{background:#fff}
+  .nm .no-print{display:none !important}
+  .nm .page-narrow{padding:0}
+  .nm .receipt{border:0;padding:0}
+}
+
+/* ---------- legal pages ---------- */
+.nm .legal-head{background:rgba(217,220,226,.94);border-bottom:1px solid rgba(14,16,19,.06)}
+.nm .prose{max-width:720px;margin:0 auto;padding:40px 24px 24px;color:#2F343C;font-size:16px;line-height:1.7}
+.nm .prose h1{font-family:var(--font-display),'Inter Tight',Inter,sans-serif;letter-spacing:-0.03em;font-size:36px;line-height:1.1;font-weight:800;color:#0E1013;margin:0 0 8px}
+.nm .prose h2{font-family:var(--font-display),'Inter Tight',Inter,sans-serif;letter-spacing:-0.02em;font-size:22px;font-weight:800;color:#0E1013;margin:32px 0 8px}
+.nm .prose p{margin:0 0 14px}
+.nm .prose ul{margin:0 0 14px;padding-left:22px}
+.nm .prose li{margin-bottom:6px}
+.nm .prose .updated{font-size:13px;color:#474D57;margin-bottom:24px}
+.nm .prose strong{color:#0E1013}
+.nm .prose table{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:15px}
+.nm .prose th,.nm .prose td{padding:10px 8px;border-bottom:1px solid #C9CDD4;text-align:left;vertical-align:top}
