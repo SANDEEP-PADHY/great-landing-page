@@ -15,8 +15,8 @@ async function q<T>(query: SQL): Promise<T[]> {
 }
 const n = (v: unknown) => Number(v ?? 0);
 const pct = (a: number, b: number) => (b > 0 ? Math.round((a / b) * 1000) / 10 : 0);
-const evWhere = (r: DateRange) => sql`e.is_bot = false and e.occurred_at >= ${r.from} and e.occurred_at < ${r.to}`;
-const paidWhere = (r: DateRange) => sql`o.status = 'paid' and o.paid_at >= ${r.from} and o.paid_at < ${r.to}`;
+const evWhere = (r: DateRange) => sql`e.is_bot = false and e.occurred_at >= ${r.from.toISOString()}::timestamptz and e.occurred_at < ${r.to.toISOString()}::timestamptz`;
+const paidWhere = (r: DateRange) => sql`o.status = 'paid' and o.paid_at >= ${r.from.toISOString()}::timestamptz and o.paid_at < ${r.to.toISOString()}::timestamptz`;
 
 function days(r: DateRange): number {
   return Math.max(1, Math.round((r.to.getTime() - r.from.getTime()) / 86_400_000));
@@ -52,7 +52,7 @@ export async function getKpis(r: DateRange) {
     from events e where ${evWhere(r)}`);
   const [ab] = await q<{ c: string }>(sql`
     select count(*) c from orders o
-    where o.status='pending' and o.created_at >= ${r.from} and o.created_at < ${r.to}
+    where o.status='pending' and o.created_at >= ${r.from.toISOString()}::timestamptz and o.created_at < ${r.to.toISOString()}::timestamptz
       and o.created_at < now() - interval '15 minutes'
       and not exists (select 1 from orders p where p.customer_id=o.customer_id and p.status='paid')`);
   const sales = n(paid?.sales);
@@ -72,8 +72,8 @@ export async function getKpis(r: DateRange) {
 export async function getDailySeries(r: DateRange) {
   const rows = await q<{ day: string; revenue: string; sales: string; visitors: string }>(sql`
     with d as (select generate_series(
-        (${r.from}::timestamptz at time zone ${sql.raw(TZ)})::date,
-        ((${r.to}::timestamptz - interval '1 second') at time zone ${sql.raw(TZ)})::date, interval '1 day')::date day),
+        (${r.from.toISOString()}::timestamptz at time zone ${sql.raw(TZ)})::date,
+        ((${r.to.toISOString()}::timestamptz - interval '1 second') at time zone ${sql.raw(TZ)})::date, interval '1 day')::date day),
     s as (select (o.paid_at at time zone ${sql.raw(TZ)})::date day, count(*) sales, sum(o.amount_paise) revenue
           from orders o where ${paidWhere(r)} group by 1),
     v as (select (e.occurred_at at time zone ${sql.raw(TZ)})::date day, count(distinct e.visitor_id) visitors
@@ -283,7 +283,7 @@ export async function getWebVitals(r: DateRange) {
 
 export async function listEvents(f: { name?: string; visitorId?: string; range: DateRange; page: number }) {
   const size = 50;
-  const where = sql`e.occurred_at >= ${f.range.from} and e.occurred_at < ${f.range.to}
+  const where = sql`e.occurred_at >= ${f.range.from.toISOString()}::timestamptz and e.occurred_at < ${f.range.to.toISOString()}::timestamptz
     ${f.name ? sql`and e.name = ${f.name}` : sql``} ${f.visitorId ? sql`and e.visitor_id = ${f.visitorId}` : sql``}`;
   const [t] = await q<{ c: string }>(sql`select count(*) c from events e where ${where}`);
   const rows = await q<Record<string, unknown>>(sql`
