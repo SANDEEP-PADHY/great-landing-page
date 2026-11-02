@@ -17,7 +17,6 @@ const n = (v: unknown) => Number(v ?? 0);
 const pct = (a: number, b: number) => (b > 0 ? Math.round((a / b) * 1000) / 10 : 0);
 const evWhere = (r: DateRange) => sql`e.is_bot = false and e.occurred_at >= ${r.from} and e.occurred_at < ${r.to}`;
 const paidWhere = (r: DateRange) => sql`o.status = 'paid' and o.paid_at >= ${r.from} and o.paid_at < ${r.to}`;
-const istDay = (col: string) => sql.raw(`to_char((${col} at time zone ${TZ})::date, 'YYYY-MM-DD')`);
 
 function days(r: DateRange): number {
   return Math.max(1, Math.round((r.to.getTime() - r.from.getTime()) / 86_400_000));
