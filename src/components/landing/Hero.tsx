@@ -6,7 +6,7 @@ import type { PriceCopy } from './format';
 
 const ico = { fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true } as const;
 
-export function Hero({ media, p }: { media: MediaMap; p: PriceCopy }) {
+export function Hero({ media, p, bonusValue }: { media: MediaMap; p: PriceCopy; bonusValue: string }) {
   return (
     <div data-section="hero" className="wrap sec" style={{ paddingTop: 40 }}>
       <div className="bento">
@@ -43,13 +43,13 @@ export function Hero({ media, p }: { media: MediaMap; p: PriceCopy }) {
           </div>
         </div>
 
-        <div className="rise d3 d-raised" style={{ gridArea: 'claude', borderRadius: 24, background: '#0E1013', color: '#F4F5F7', padding: 18, display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div className="rise d3 d-raised" style={{ gridArea: 'bonus', borderRadius: 24, background: '#0E1013', color: '#F4F5F7', padding: 18, display: 'flex', alignItems: 'center', gap: 16 }}>
           <div className="bn-logo" style={{ flex: 'none', borderRadius: 14, background: 'var(--cta)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-            <SiteImage media={media} k="claude_logo" sizes="72px" />
+            <svg width="55%" height="55%" viewBox="0 0 24 24" stroke="#0E1013" strokeWidth="2" {...ico}><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <div className="disp bn-title" style={{ fontWeight: 800, lineHeight: 1.2 }}>
-              <span style={{ whiteSpace: 'nowrap' }}>FREE Claude subscription</span><br /><span style={{ color: '#9DB8FF' }}>worth ₹2,000</span>
+              <span>FREE landing page template</span><br /><span style={{ color: '#9DB8FF' }}>{bonusValue ? `worth ${bonusValue}` : 'Instant download after payment'}</span>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@ export function Hero({ media, p }: { media: MediaMap; p: PriceCopy }) {
           <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: '.08em', textTransform: 'uppercase', color: '#474D57', padding: '12px 0 4px' }}>What you get for {p.now}</div>
           <GetRow bottom icon={<><rect x="2" y="5" width="14" height="14" rx="2" /><path d="M16 10l6-3v10l-6-3" /></>} title="1 live webinar seat" sub="Pick 7, 8, 9 or 10 Nov · 7–9 PM IST" />
           <GetRow bottom icon={<><path d="M12 3l9 5-9 5-9-5z" /><path d="M3 13l9 5 9-5" /></>} title="The full system + live Q&A" sub="Idea, AI creation, store, payments, auto delivery, traffic" />
-          <GetRow last icon={<><rect x="3" y="8" width="18" height="13" rx="2" /><path d="M12 8v13M3 12h18" /></>} title="FREE Claude subscription worth ₹2,000" sub="For every full live attendee, plus a landing page template" />
+          <GetRow last icon={<><rect x="3" y="8" width="18" height="13" rx="2" /><path d="M12 8v13M3 12h18" /></>} title={`FREE landing page template${bonusValue ? ` worth ${bonusValue}` : ''}`} sub="The page structure I use to sell. Instant download" />
         </div>
 
         <div className="rise d5 raised" style={{ gridArea: 'buy', borderRadius: 24, background: '#F4F5F7', padding: 24, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 16 }}>

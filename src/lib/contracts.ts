@@ -4,7 +4,7 @@ export const SLOT_IDS = ['s7', 's8', 's9', 's10'] as const;
 export type SlotId = (typeof SLOT_IDS)[number];
 
 export const MEDIA_KEYS = [
-  'hero', 'proof', 'host', 'claude_logo', 'bonus_template_cover',
+  'hero', 'proof', 'host', 'bonus_template_cover',
   'og_image', 'logo', 'favicon', 'bonus_template_file',
 ] as const;
 export type MediaKey = (typeof MEDIA_KEYS)[number];
@@ -17,7 +17,7 @@ export type Settings = {
   regular_price_paise: number;
   offer_ends_at: string; // ISO with +05:30
   sales_open: boolean;
-  claude_bonus_value: string;
+  bonus_value: string; // optional '₹999' shown as "worth ₹999" next to the template bonus
   email_abandoned_enabled: boolean;
   email_abandoned_delay_min: number;
   email_admin_alert_enabled: boolean;
@@ -28,7 +28,7 @@ export type SettingKey = keyof Settings;
 export type PublicSettings = Pick<
   Settings,
   | 'whatsapp_link' | 'contact_email' | 'contact_phone' | 'offer_price_paise'
-  | 'regular_price_paise' | 'offer_ends_at' | 'sales_open' | 'claude_bonus_value'
+  | 'regular_price_paise' | 'offer_ends_at' | 'sales_open' | 'bonus_value'
 >;
 
 export type SlotView = {

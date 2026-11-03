@@ -121,7 +121,7 @@ export function Host({ media }: { media: MediaMap }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: 6 }}>
           <div className="eyebrow">YOUR HOST</div>
           <h2 className="disp h2" style={{ margin: 0, fontWeight: 800 }}>Sandeep Padhy</h2>
-          <p style={{ margin: 0, color: '#2F343C' }}>I wrote one ebook on getting the most out of Claude. I set up a fully automated store, ran Meta ads, and made ₹1.4 lakh in 7 days.</p>
+          <p style={{ margin: 0, color: '#2F343C' }}>I wrote one ebook on getting the most out of AI. I set up a fully automated store, ran Meta ads, and made ₹1.4 lakh in 7 days.</p>
           <p style={{ margin: 0, color: '#2F343C' }}>In this session I rebuild that system live and answer your questions.</p>
         </div>
       </div>
@@ -132,35 +132,37 @@ export function Host({ media }: { media: MediaMap }) {
 export function Bonus({ p, bonusValue, media }: { p: PriceCopy; bonusValue: string; media?: MediaMap }) {
   return (
     <div data-section="bonus" className="wrap sec" style={{ paddingTop: 0, display: 'flex', flexDirection: 'column', gap: 30 }}>
-      <h2 className="disp h2" style={{ margin: 0, fontWeight: 800 }}>Pay {p.now}.<br /><span style={{ color: '#1D4ED8' }}>Get {bonusValue} back.</span></h2>
+      <h2 className="disp h2" style={{ margin: 0, fontWeight: 800 }}>Pay {p.now}.<br /><span style={{ color: '#1D4ED8' }}>{bonusValue ? `Get ${bonusValue} back.` : 'Get the template free.'}</span></h2>
       <div className="d-raised" style={{ borderRadius: 32, background: '#0E1013', color: '#F4F5F7', padding: '34px 24px', display: 'flex', flexDirection: 'column', gap: 18 }}>
-        <span style={{ alignSelf: 'flex-start', fontSize: 12, fontWeight: 800, letterSpacing: '.06em', background: 'var(--cta)', color: '#0E1013', borderRadius: 6, padding: '4px 9px' }}>FOR EVERY ATTENDEE</span>
-        <div className="disp h2" style={{ fontWeight: 800 }}>Free Claude subscription</div>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap' }}>
-          <span className="disp price-xl" style={{ fontWeight: 800, lineHeight: 1, color: '#9DB8FF' }}>{bonusValue}</span>
-          <span style={{ fontSize: 16, color: '#C9CDD4' }}>value, yours free</span>
-        </div>
-        <div style={{ fontSize: 17, color: '#E4E6EA', maxWidth: 560 }}>The webinar costs {p.now}. The subscription alone is worth 4× that. Use it to build your product with AI right after the session.</div>
-        <div style={{ fontSize: 12, color: '#A9AEB8' }}>Given to every attendee who stays for the full live session and follows the claim steps shared at the end. GenZy Club is not affiliated with Anthropic.</div>
+        <span style={{ alignSelf: 'flex-start', fontSize: 12, fontWeight: 800, letterSpacing: '.06em', background: 'var(--cta)', color: '#0E1013', borderRadius: 6, padding: '4px 9px' }}>FOR EVERY BUYER</span>
+        <div className="disp h2" style={{ fontWeight: 800 }}>Free landing page template</div>
+        {bonusValue && (
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap' }}>
+            <span className="disp price-xl" style={{ fontWeight: 800, lineHeight: 1, color: '#9DB8FF' }}>{bonusValue}</span>
+            <span style={{ fontSize: 16, color: '#C9CDD4' }}>value, yours free</span>
+          </div>
+        )}
+        <div style={{ fontSize: 17, color: '#E4E6EA', maxWidth: 560 }}>The page structure I use to sell, ready to use. Add your product and go live right after the session.</div>
+        <div style={{ fontSize: 12, color: '#A9AEB8' }}>Download it instantly after payment, from your confirmation page and email.</div>
       </div>
       <div className="g2">
         <div className="raised" style={{ borderRadius: 24, padding: 24, background: '#F4F5F7', display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <span className="tag" style={{ alignSelf: 'flex-start', background: 'var(--cta)', color: '#0E1013' }}>BONUS 1</span>
+          <span className="tag" style={{ alignSelf: 'flex-start', background: 'var(--cta)', color: '#0E1013' }}>WHAT YOU GET</span>
           {media?.bonus_template_cover && (
             <div style={{ borderRadius: 16, overflow: 'hidden', aspectRatio: '16 / 10' }}>
               <SiteImage media={media} k="bonus_template_cover" sizes="(min-width: 900px) 420px, 90vw" />
             </div>
           )}
-          <div className="disp" style={{ fontSize: 22, fontWeight: 800 }}>Landing page template</div>
-          <div style={{ color: '#2F343C' }}>The page structure I use to sell. Add your product and go live.</div>
+          <div className="disp" style={{ fontSize: 22, fontWeight: 800 }}>A ready-made sales page</div>
+          <div style={{ color: '#2F343C' }}>The same layout I use to sell my own product. Swap in your product, price and photos, then publish.</div>
         </div>
         <div className="raised" style={{ borderRadius: 24, padding: 24, background: '#F4F5F7', display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <span className="tag" style={{ alignSelf: 'flex-start', background: '#1D4ED8', color: '#FFFFFF' }}>HOW TO CLAIM</span>
-          <div className="disp" style={{ fontSize: 22, fontWeight: 800 }}>3 steps to your free subscription</div>
+          <span className="tag" style={{ alignSelf: 'flex-start', background: '#1D4ED8', color: '#FFFFFF' }}>HOW TO GET IT</span>
+          <div className="disp" style={{ fontSize: 22, fontWeight: 800 }}>3 steps to your free template</div>
           <div style={{ color: '#2F343C' }}>
             <strong style={{ color: '#0E1013' }}>1.</strong> Book your seat for {p.now}<br />
-            <strong style={{ color: '#0E1013' }}>2.</strong> Attend the full live session<br />
-            <strong style={{ color: '#0E1013' }}>3.</strong> Follow the claim steps at the end
+            <strong style={{ color: '#0E1013' }}>2.</strong> Download it right after payment<br />
+            <strong style={{ color: '#0E1013' }}>3.</strong> Add your product and go live
           </div>
         </div>
       </div>
