@@ -23,7 +23,7 @@ export const LEARN = [
   'Store, payments and instant delivery setup',
   'Getting traffic from Meta ads and organic',
   'Automations that sell while you sleep',
-  'My exact 7-day, ₹1.4L launch breakdown',
+  'My exact 7-day, ₹1.2L launch breakdown',
 ];
 
 export const FOR_YES = [
@@ -51,7 +51,7 @@ export const FAQS: [string, string][] = [
   ['Is there a recording?', 'Yes. Attend live if you can, so you can ask your questions in the Q&A.'],
   ['Is payment safe?', 'Yes. Payments go through Razorpay: UPI, cards and netbanking. We never see your card details.'],
   ['Can I get a refund?', 'No refunds, so pick your date carefully. If we cancel a session, you can switch dates for free or get a refund.'],
-  ['Is income guaranteed?', 'No. ₹1.4L in 7 days is my personal result. Yours depends on your work.'],
+  ['Is income guaranteed?', 'No. ₹1.2L in 7 days is my personal result. Yours depends on your work.'],
 ];
 
 export const SITE = {
@@ -59,7 +59,7 @@ export const SITE = {
   domain: 'genzyclub.tech',
   host: 'Sandeep Padhy',
   defaultContactEmail: 'genzyclub.com@gmail.com',
-  title: 'Live Webinar: ₹1.4L in 7 Days with an Automated Digital Product | GenZy Club',
+  title: 'Live Webinar: ₹1.2L in 7 Days with an Automated Digital Product | GenZy Club',
   description:
     'Join my 2-hour live webinar and learn to build and sell your own digital product on autopilot. ₹499 till 10 Nov, with a free landing page template.',
   contentId: 'webinar_nov_2026',

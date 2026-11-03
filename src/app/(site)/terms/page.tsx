@@ -24,7 +24,7 @@ export default async function Page() {
       <p>All content, templates and materials remain our property. You get a personal, non-transferable licence to use them for your own projects.</p>
       <h2>7. Disclaimers</h2>
       <ul>
-        <li><strong>Earnings:</strong> ₹1.4 lakh in 7 days is the host&apos;s personal result. Results vary and depend on your effort, market and skills. This is education, not an income guarantee.</li>
+        <li><strong>Earnings:</strong> ₹1.2 lakh in 7 days is the host&apos;s personal result. Results vary and depend on your effort, market and skills. This is education, not an income guarantee.</li>
         <li><strong>Template bonus:</strong> available to every paid buyer as a download after payment, for personal use as described in section 6.</li>
         <li><strong>No affiliation:</strong> GenZy Club is not affiliated with, endorsed by or sponsored by Meta.</li>
       </ul>
