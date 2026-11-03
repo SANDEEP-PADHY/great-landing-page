@@ -10,7 +10,7 @@ export function Footer({ email, phone, bottomPad = 120 }: { email?: string; phon
           <a href={`mailto:${mail}`}>{mail}</a>
           {phone ? <a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a> : null}
         </div>
-        <p style={{ margin: 0 }}>₹1.4L in 7 days is my personal result. Results vary. This is education, not an income guarantee. The free subscription goes only to full live attendees who complete the process shared at the end. GenZy Club is not affiliated with Anthropic or Meta.</p>
+        <p style={{ margin: 0 }}>₹1.4L in 7 days is my personal result. Results vary. This is education, not an income guarantee. GenZy Club is not affiliated with Meta.</p>
         <p style={{ margin: 0 }}>© 2026 GenZy Club · {SITE.domain}</p>
       </div>
     </div>

@@ -19,7 +19,7 @@ body:has(.nm){margin:0;background:#D9DCE2}
 .nm .hook{font-size:18px;line-height:1.35}
 .nm .price-xl{font-size:52px}
 .nm .stack{display:flex;flex-direction:column;gap:24px}
-.nm .bento{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;grid-template-areas:"head" "claude" "buy" "get" "photo"}
+.nm .bento{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;grid-template-areas:"head" "bonus" "buy" "get" "photo"}
 .nm .bn-title{font-size:17px}
 .nm .t1,.nm .t2,.nm .t3{display:block}
 .nm .t1{font-size:55px;line-height:1}
@@ -47,7 +47,7 @@ body:has(.nm){margin:0;background:#D9DCE2}
 .nm .hook{font-size:21px}
 .nm .price-xl{font-size:68px}
 .nm .stack{gap:34px}
-.nm .bento{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:21px 34px;grid-template-areas:"head photo" "claude photo" "buy get"}
+.nm .bento{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:21px 34px;grid-template-areas:"head photo" "bonus photo" "buy get"}
 .nm .bn-title{font-size:20px}
 .nm .t1{font-size:89px}
 .nm .t2{font-size:55px}

@@ -1,7 +1,7 @@
 import { STACK } from '@/content/landing';
 import { PricingCta } from './PricingCta';
 import { SlotPicker } from './SlotPicker';
-import type { PriceCopy } from './format';
+import { worth, type PriceCopy } from './format';
 
 export function PriceBlock({ p, bonusValue }: { p: PriceCopy; bonusValue: string }) {
   return (
@@ -9,7 +9,7 @@ export function PriceBlock({ p, bonusValue }: { p: PriceCopy; bonusValue: string
       <div className="raised" style={{ maxWidth: 720, margin: '0 auto', borderRadius: 32, padding: '34px 21px', background: '#F4F5F7', display: 'flex', flexDirection: 'column', gap: 24 }}>
         <h2 className="disp h2" style={{ margin: 0, fontWeight: 800, textAlign: 'center' }}>Everything for {p.now}</h2>
         <div style={{ alignSelf: 'center', textAlign: 'center', fontSize: 14, fontWeight: 700, color: '#FFFFFF', background: '#1D4ED8', borderRadius: 999, padding: '8px 16px' }}>
-          Includes a {bonusValue} Claude subscription, free
+          Includes a FREE landing page template{worth(bonusValue)}
         </div>
         <div className="inset" style={{ borderRadius: 20, padding: '6px 18px' }}>
           {STACK.map((it, i) => (

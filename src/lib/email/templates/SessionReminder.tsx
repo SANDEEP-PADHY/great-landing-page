@@ -7,7 +7,7 @@ export function SessionReminder(p: { name: string; slotLabel: string; webinarUrl
       <P>Hi {p.name.split(' ')[0]}, your session ({p.slotLabel}) is about to begin.</P>
       <Cta href={p.webinarUrl}>Join webinar</Cta>
       {p.whatsappLink ? <P>Updates: <a href={p.whatsappLink}>WhatsApp community</a></P> : null}
-      <P muted>Stay until the end to claim the free Claude subscription.</P>
+      <P muted>Stay until the end for the live Q&amp;A.</P>
     </Layout>
   );
 }

@@ -1,7 +1,7 @@
 // All landing-page copy arrays, moved 1:1 from the design's renderVals().
 
 export const TICKER = [
-  'Free Claude subscription worth ₹2,000',
+  'Free landing page template',
   'No inventory',
   'No team',
   'No code',
@@ -39,17 +39,16 @@ export const STACK = [
   'The complete automated product system',
   'Live Q&A',
   'WhatsApp community access, instantly',
-  'Landing page template (bonus)',
-  'FREE Claude subscription worth ₹2,000 (every full attendee)',
+  'FREE landing page template (instant download)',
   'Session recording',
 ];
 
 export const FAQS: [string, string][] = [
   ['Where is the webinar?', 'Live on webinar.gg. You get the WhatsApp group link right after payment. The join link comes on WhatsApp and email before your session.'],
-  ['How do I get the free Claude subscription?', 'Book a seat, attend the full live session, and follow the claim steps I share at the end. It is worth ₹2,000 and free for every full attendee.'],
+  ['How do I get the free template?', 'Book your seat. You can download the landing page template right after payment, from your confirmation page and email.'],
   ['Do I need experience?', 'No. Everything starts from zero.'],
   ['Do I need a laptop?', 'You can watch on your phone. A laptop helps when you build the system later.'],
-  ['Is there a recording?', 'Yes. The free Claude subscription bonus is only for people who attend the full session live.'],
+  ['Is there a recording?', 'Yes. Attend live if you can, so you can ask your questions in the Q&A.'],
   ['Is payment safe?', 'Yes. Payments go through Razorpay: UPI, cards and netbanking. We never see your card details.'],
   ['Can I get a refund?', 'No refunds, so pick your date carefully. If we cancel a session, you can switch dates for free or get a refund.'],
   ['Is income guaranteed?', 'No. ₹1.4L in 7 days is my personal result. Yours depends on your work.'],
@@ -62,7 +61,7 @@ export const SITE = {
   defaultContactEmail: 'genzyclub.com@gmail.com',
   title: 'Live Webinar: ₹1.4L in 7 Days with an Automated Digital Product | GenZy Club',
   description:
-    'Join my 2-hour live webinar and learn to build and sell your own digital product on autopilot. ₹499 till 10 Nov, with a free Claude subscription worth ₹2,000.',
+    'Join my 2-hour live webinar and learn to build and sell your own digital product on autopilot. ₹499 till 10 Nov, with a free landing page template.',
   contentId: 'webinar_nov_2026',
 };
 
