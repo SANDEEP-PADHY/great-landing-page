@@ -2,8 +2,7 @@
 # Diagnoses admin-uploaded images. Run on the VPS as the deploy user:  bash deploy/check-uploads.sh
 cd /var/www/genzyclub/app
 val() { grep -E "^$1=" .env | tail -1 | cut -d= -f2- | sed -e 's/^"//' -e 's/"$//'; }
-DIR=$(realpath -m "$(val UPLOAD_DIR)")
-[ "$DIR" = "$(pwd)" ] && DIR=$(realpath -m ./uploads)
+U=$(val UPLOAD_DIR); DIR=$(realpath -m "${U:-./uploads}")
 echo "== commit: $(git rev-parse --short HEAD) on $(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
 echo "== route present: $([ -f 'src/app/uploads/[file]/route.ts' ] && echo yes || echo NO)"
 echo "== upload dir: $DIR"
