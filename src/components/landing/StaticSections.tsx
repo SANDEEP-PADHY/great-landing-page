@@ -129,7 +129,7 @@ export function Host({ media }: { media: MediaMap }) {
   );
 }
 
-export function Bonus({ p, bonusValue }: { p: PriceCopy; bonusValue: string }) {
+export function Bonus({ p, bonusValue, media }: { p: PriceCopy; bonusValue: string; media?: MediaMap }) {
   return (
     <div data-section="bonus" className="wrap sec" style={{ paddingTop: 0, display: 'flex', flexDirection: 'column', gap: 30 }}>
       <h2 className="disp h2" style={{ margin: 0, fontWeight: 800 }}>Pay {p.now}.<br /><span style={{ color: '#1D4ED8' }}>Get {bonusValue} back.</span></h2>
@@ -146,6 +146,11 @@ export function Bonus({ p, bonusValue }: { p: PriceCopy; bonusValue: string }) {
       <div className="g2">
         <div className="raised" style={{ borderRadius: 24, padding: 24, background: '#F4F5F7', display: 'flex', flexDirection: 'column', gap: 10 }}>
           <span className="tag" style={{ alignSelf: 'flex-start', background: 'var(--cta)', color: '#0E1013' }}>BONUS 1</span>
+          {media?.bonus_template_cover && (
+            <div style={{ borderRadius: 16, overflow: 'hidden', aspectRatio: '16 / 10' }}>
+              <SiteImage media={media} k="bonus_template_cover" sizes="(min-width: 900px) 420px, 90vw" />
+            </div>
+          )}
           <div className="disp" style={{ fontSize: 22, fontWeight: 800 }}>Landing page template</div>
           <div style={{ color: '#2F343C' }}>The page structure I use to sell. Add your product and go live.</div>
         </div>

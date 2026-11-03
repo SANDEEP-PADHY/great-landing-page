@@ -59,7 +59,7 @@ export default async function LandingPage() {
       <Learn />
       <ForYou />
       <Host media={media} />
-      <Bonus p={p} bonusValue={bonus} />
+      <Bonus p={p} bonusValue={bonus} media={media} />
       <PriceBlock p={p} bonusValue={bonus} />
       <Faq />
       <FinalCta p={p} bonusValue={bonus} />
