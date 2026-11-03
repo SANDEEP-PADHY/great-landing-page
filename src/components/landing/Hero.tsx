@@ -45,11 +45,7 @@ export function Hero({ media, p }: { media: MediaMap; p: PriceCopy }) {
 
         <div className="rise d3 d-raised" style={{ gridArea: 'claude', borderRadius: 24, background: '#0E1013', color: '#F4F5F7', padding: 18, display: 'flex', alignItems: 'center', gap: 16 }}>
           <div className="bn-logo" style={{ flex: 'none', borderRadius: 14, background: 'var(--cta)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-            {media.claude_logo ? (
-              <SiteImage media={media} k="claude_logo" sizes="72px" style={{ objectFit: 'contain', padding: 8 }} />
-            ) : (
-              <div style={{ width: 44, height: 44, borderRadius: 10, border: '1.5px dashed #0E1013', color: '#0E1013', fontSize: 10, fontWeight: 700, lineHeight: 1.1, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>Claude logo</div>
-            )}
+            <SiteImage media={media} k="claude_logo" sizes="72px" />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <div className="disp bn-title" style={{ fontWeight: 800, lineHeight: 1.2 }}>
