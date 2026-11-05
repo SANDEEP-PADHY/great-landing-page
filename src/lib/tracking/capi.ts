@@ -3,6 +3,7 @@ import { and, asc, eq, gt, lte, sql } from 'drizzle-orm';
 import { db } from '@/lib/db/client';
 import { capiOutbox, customers, orders, visitors } from '@/lib/db/schema';
 import { getSettings } from '@/lib/settings';
+import { PIXEL_ID } from './pixel';
 import { hashEmail, hashExternalId, hashName, hashPhone, sha256, splitName } from './hash';
 
 const MAX_ATTEMPTS = 6;
@@ -77,7 +78,7 @@ export async function enqueueCapi(item: CapiItem): Promise<void> {
 
 function cfg() {
   return {
-    pixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '',
+    pixelId: PIXEL_ID,
     token: process.env.META_CAPI_ACCESS_TOKEN ?? '',
     version: process.env.META_GRAPH_VERSION || 'v24.0',
   };

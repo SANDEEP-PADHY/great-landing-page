@@ -9,7 +9,7 @@ declare global {
   interface Window { fbq?: Fbq; _fbq?: Fbq }
 }
 
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '';
+import { PIXEL_ID } from '@/lib/tracking/pixel';
 const ENDPOINT = '/api/events';
 const FLUSH_MS = 2000;
 const FLUSH_AT = 10;
