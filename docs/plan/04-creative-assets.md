@@ -30,7 +30,7 @@ Make 3 to 4 short vertical videos (9:16, 15 to 30 sec) to test which hook wins. 
 
 | Video | Hook (first 2 sec, Hinglish) |
 |---|---|
-| A: Proof hook | "7 din. ₹1,40,000. Ek bhi physical product nahi." |
+| A: Proof hook | "1 hafte mein ₹1,00,000. Ek bhi physical product nahi." |
 | B: Curiosity | "Main so raha tha aur mere phone pe payments aa rahe the." |
 | C: Pain | "Job ki salary kam pad rahi hai? Yeh digital system try karo." |
 | D: You talking | Real selfie video of you (30 sec) — often beats AI video in India. Strongly recommended as one of the tests. |

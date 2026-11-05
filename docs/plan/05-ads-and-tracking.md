@@ -19,7 +19,7 @@
 - **Hook theme:** "Is Diwali, apni life badlo" + ~~₹2,499~~ ₹499 Diwali offer.
 
 ## Ad policy safety (Meta is strict on "make money" ads)
-- Say "my result", never "you will earn ₹1.4L".
+- Say "my result", never "you will earn ₹1 lakh".
 - Earnings disclaimer on the landing page.
 - No fake screenshots, no "guaranteed income".
 - Avoid using "Claude" or other brand names as the main hook in ads.

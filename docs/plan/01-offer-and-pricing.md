@@ -40,5 +40,5 @@ Day 1 metrics (cost per click, cost per checkout, cost per sale) decide the budg
 Zero cost to you: Claude subscriptions come from sponsors, handled separately. The landing page template is a file you already have. So every sale is ~₹487 after Razorpay fees, and the only cost is ads.
 
 ## Required disclaimers
-- Earnings: "₹1.4L in 7 days is my personal result. Results vary. This is education, not an income guarantee."
+- Earnings: "₹1 lakh in a week is my personal result. Results vary. This is education, not an income guarantee."
 - Bonus: "Free subscription is given only to attendees who complete the full live session and follow the process shared at the end. GenZy Club is not affiliated with Anthropic."

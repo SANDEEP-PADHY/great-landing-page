@@ -18,7 +18,7 @@ Language: Hinglish, simple, conversational. All copy below is a first draft for 
 `🪔 DIWALI OFFER · LIVE Webinar · 7 to 10 Nov · 7 to 9 PM · Hinglish · ~~₹2,499~~ Sirf ₹499`
 
 ### 2. Hero (above the fold)
-- **Headline:** "Maine 7 din mein ₹1,40,000 kamaye digital products bech ke. Fully automated. Ab main aapko exact system dikhaunga."
+- **Headline:** "Maine 1 hafte mein ₹1,00,000 kamaye digital products bech ke. Fully automated. Ab main aapko exact system dikhaunga."
 - **Theme line:** "Is Diwali, apni life badlo. 🪔"
 - **Sub:** "2 ghante ka LIVE webinar. Product idea se lekar automatic sales tak, step by step. No inventory, no team, no coding."
 - **Visual:** AI banner of you + Razorpay dashboard screenshot style mockup (or real screenshot, blurred details).
@@ -41,13 +41,13 @@ Language: Hinglish, simple, conversational. All copy below is a first draft for 
 3. Store + payment + automatic delivery setup
 4. Traffic: ads aur organic, dono
 5. Automation: aap so rahe ho, sales ho rahi hai
-6. Mera exact 7-day ₹1.4L launch breakdown
+6. Mera exact first-week ₹1 lakh launch breakdown
 
 ### 6. The system (visual diagram)
 Simple 4-step graphic: **Idea → Create → Automate → Sell**
 
 ### 7. About Sandeep Padhy
-Photo + short story. Draft: "Main Sandeep Padhy hoon. Maine ek simple ebook banaya: Claude subscription ko maximum kaise use karein, Meta ads, websites, aur customers ko bechna. Fully automated system se 7 din mein ₹1.4L ki sales hui. Is webinar mein main woh poora system aapke saamne live build karunga."
+Photo + short story. Draft: "Main Sandeep Padhy hoon. Maine ek simple ebook banaya: Claude subscription ko maximum kaise use karein, Meta ads, websites, aur customers ko bechna. Fully automated system se 1 hafte mein ₹1 lakh ki sales hui. Is webinar mein main woh poora system aapke saamne live build karunga."
 
 ### 8. Bonus section
 "🎁 2 FREE bonuses: (1) Ready-made landing page template, (2) Pura webinar attend karo, Claude subscription FREE pao." Explain: given to everyone who attends the full live session and follows the process shared at the end. Small print: not affiliated with Anthropic.

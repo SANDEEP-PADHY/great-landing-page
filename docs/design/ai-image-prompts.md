@@ -30,7 +30,7 @@ Use the man in the attached reference photos as the only person. Keep his exact 
 
 **Size:** 3:4 portrait, upload 1200×1600 or larger. Nano Banana: choose 3:4. ChatGPT: choose 2:3 portrait and crop to 3:4.
 
-**Where it shows:** top of the page, next to the "₹1.4 lakh. 7 days. Fully automated." headline. A floating "₹1,40,000 in 7 days" card sits over the bottom-left corner, so keep that corner empty.
+**Where it shows:** top of the page, next to the "₹1 lakh in a week. Fully automated." headline. A floating "₹1,00,000 in a week" card sits over the bottom-left corner, so keep that corner empty.
 
 **Upload with the prompt:** your 3 to 5 face selfies, plus the outfit photo if you have one.
 
@@ -68,7 +68,7 @@ Subject centred, eyes on the upper third line, a little headroom. 50mm lens look
 
 **Size:** 16:9 landscape, upload 1600×900 (at least 1280 wide). The frame crops to 16:9, so crop it yourself first so nothing important is cut.
 
-**What to upload:** a real screenshot of your Razorpay dashboard showing the ₹1.4 lakh over 7 days. Blur or black out customer names, emails, phone numbers and payment IDs before uploading.
+**What to upload:** a real screenshot of your Razorpay dashboard showing the ₹1 lakh in a week. Blur or black out customer names, emails, phone numbers and payment IDs before uploading.
 
 This must be a real screenshot. An AI-generated or edited earnings image is fake income proof: Meta rejects ads that use it, and it breaks ASCI advertising rules in India. If you want a cleaner look, take the screenshot in Razorpay's light mode, crop to the earnings chart and total, and zoom the browser to 125% before capturing so the numbers are crisp.
 
@@ -147,8 +147,8 @@ Right 40%: the man from the reference, chest-up, black crew-neck t-shirt, confid
 
 Left 60%: smooth soft light grey background (#E3E6EB) with large bold sans-serif text in the style of Inter Tight ExtraBold, left aligned, exactly these words and nothing else:
 Line 1, small, in a near-black rounded pill with white letters: LIVE WEBINAR
-Line 2, huge, near-black (#0E1013): ₹1.4 lakh.
-Line 3, huge, near-black: 7 days.
+Line 2, huge, near-black (#0E1013): ₹1 lakh
+Line 3, huge, near-black: in a week.
 Line 4, huge, royal blue (#1D4ED8): Fully automated.
 Line 5, small, dark grey: 7–10 Nov · 7–9 PM IST
 Top-left corner, small orange (#F27321) rounded tag with near-black text: DIWALI OFFER
@@ -173,4 +173,4 @@ Upload each file in the admin under **Content & media**, in the card with the ma
 | 7 | Claude logo | Official Anthropic file | 256×256 transparent PNG | Not AI |
 | 8 | Bonus template cover (optional) | AI mockup | 1600×1200, 4:3 | Screenshot of your template |
 
-After uploading, open the live page on your phone and check three things: your face is not cut off in the hero, nothing sits under the floating ₹1,40,000 card, and the share preview looks right when you send the link to yourself on WhatsApp (WhatsApp caches previews, so test with `?v=2` on the end of the link).
+After uploading, open the live page on your phone and check three things: your face is not cut off in the hero, nothing sits under the floating ₹1,00,000 card, and the share preview looks right when you send the link to yourself on WhatsApp (WhatsApp caches previews, so test with `?v=2` on the end of the link).
