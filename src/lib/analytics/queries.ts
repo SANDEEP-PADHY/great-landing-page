@@ -2,6 +2,7 @@ import 'server-only';
 import { sql, type SQL } from 'drizzle-orm';
 import { db } from '@/lib/db/client';
 import type { DateRange, SlotId } from '@/lib/contracts';
+import { PIXEL_ID } from '@/lib/tracking/pixel';
 
 /* Analytics library for the admin dashboard.
  * All queries: exclude bots, bucket by IST, unique visitors for funnels, money from `orders` (paid) only. */
@@ -314,7 +315,7 @@ export async function getCapiHealth() {
     select count(*) c from capi_outbox c join events e on e.event_id = c.event_id and e.source='browser'
     where c.status='sent' and c.sent_at >= now() - interval '24 hours'`);
   return {
-    pixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '',
+    pixelId: PIXEL_ID,
     sent24h: n(c?.sent24), pending: n(c?.pending), failed24h: n(c?.failed24),
     ...(last ? { lastError: { message: last.last_error, fbtraceId: last.fbtrace_id ?? undefined, at: new Date(last.at).toISOString() } } : {}),
     dedupPairs24h: n(d?.c),
