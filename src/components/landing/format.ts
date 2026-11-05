@@ -1,5 +1,10 @@
 // Client-safe formatting helpers (no server imports, so they can ship in client bundles).
 
+/** ' worth ₹999' when a bonus value is set in admin, otherwise ''. */
+export function worth(v: string): string {
+  return v ? ` worth ${v}` : '';
+}
+
 export function inr(paise: number): string {
   const rupees = paise / 100;
   return '₹' + rupees.toLocaleString('en-IN', { maximumFractionDigits: Number.isInteger(rupees) ? 0 : 2 });

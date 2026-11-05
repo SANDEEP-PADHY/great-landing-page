@@ -95,7 +95,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: SP 
         <TrackedLink href={`/api/download/template?${q}`} event="template_download_click" className="btn-secondary raised-sm">Download the free landing page template</TrackedLink>
 
         <div className="raised-sm" style={{ borderRadius: 18, background: '#F4F5F7', padding: 20, display: 'flex', flexDirection: 'column', gap: 8, fontSize: 15, color: '#2F343C' }}>
-          <div><strong style={{ color: '#0E1013' }}>Free Claude subscription:</strong> attend the full live session and follow the claim steps shared at the end.</div>
+          <div><strong style={{ color: '#0E1013' }}>Free landing page template:</strong> download it with the button above. The link is also in your confirmation email.</div>
           <div>Order ID: <strong style={{ color: '#0E1013' }}>{receipt.publicId}</strong> · {inr(receipt.amountPaise)} paid{receipt.paidAt ? ` on ${longDateIST(receipt.paidAt)}` : ''}</div>
           <TrackedLink href={`/invoice/${receipt.publicId}?t=${t}`} event="invoice_view_click">View invoice</TrackedLink>
         </div>

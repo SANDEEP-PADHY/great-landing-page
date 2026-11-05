@@ -4,7 +4,7 @@ import { track } from '@/lib/tracking/client';
 import { Countdown } from './Countdown';
 import { useLanding } from './LandingProvider';
 
-/** Offer strip + header with the "Free Claude · Claim now" pill. */
+/** Offer strip + header with the "Free template · Claim now" pill. */
 export function TopBar({ logoSrc }: { logoSrc?: string }) {
   const { offerLive, openSheet, selectedId, salesOpen } = useLanding();
   return (
@@ -44,7 +44,7 @@ export function TopBar({ logoSrc }: { logoSrc?: string }) {
               }}
             >
               <span className="pulse" style={{ width: 8, height: 8, borderRadius: '50%', background: '#1D4ED8' }} />
-              Free Claude · <span style={{ color: '#1D4ED8' }}>Claim now</span>
+              Free template · <span style={{ color: '#1D4ED8' }}>Claim now</span>
             </button>
           )}
         </div>

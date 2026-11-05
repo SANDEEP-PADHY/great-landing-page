@@ -46,13 +46,13 @@ export default async function LandingPage() {
   const now = new Date();
   const price = getPriceView(settings, now);
   const p = priceCopy(price);
-  const bonus = settings.claude_bonus_value || '₹2,000';
+  const bonus = settings.bonus_value;
 
   return (
     <LandingProvider slots={slots} price={price} salesOpen={settings.sales_open} renderedAt={now.getTime()}>
       <TrackingRoot pageType="landing" />
       <TopBar logoSrc={media.logo?.src} />
-      <Hero media={media} p={p} />
+      <Hero media={media} p={p} bonusValue={bonus} />
       <Ticker p={p} />
       <Proof media={media} />
       <Steps />
