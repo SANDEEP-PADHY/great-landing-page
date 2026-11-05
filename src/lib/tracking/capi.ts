@@ -1,7 +1,7 @@
 import 'server-only';
-import { and, asc, eq, lte, sql } from 'drizzle-orm';
+import { and, asc, eq, gt, lte, sql } from 'drizzle-orm';
 import { db } from '@/lib/db/client';
-import { capiOutbox, customers, visitors } from '@/lib/db/schema';
+import { capiOutbox, customers, orders, visitors } from '@/lib/db/schema';
 import { getSettings } from '@/lib/settings';
 import { hashEmail, hashExternalId, hashName, hashPhone, sha256, splitName } from './hash';
 
@@ -145,6 +145,26 @@ export async function sendOutboxRowNow(eventId: string, eventName: string, timeo
   } catch { /* the worker will retry */ }
 }
 
+type Tx = Parameters<Parameters<typeof db.transaction>[0]>[0];
+
+async function settleTx(tx: Tx, r: OutboxRow, status: number, body: MetaResponse) {
+  if (status >= 200 && status < 300) {
+    await tx.update(capiOutbox)
+      .set({ status: 'sent', sentAt: new Date(), fbtraceId: body.fbtrace_id ?? null, lastError: null })
+      .where(eq(capiOutbox.id, r.id));
+    return;
+  }
+  const permanent = status >= 400 && status < 500 && status !== 429;
+  const attempts = r.attempts + 1;
+  await tx.update(capiOutbox).set({
+    attempts,
+    status: permanent || attempts >= MAX_ATTEMPTS ? 'failed' : 'pending',
+    lastError: (body.error?.message ?? `HTTP ${status || 'network error'}`).slice(0, 500),
+    fbtraceId: body.error?.fbtrace_id ?? null,
+    nextAttemptAt: new Date(Date.now() + 2 ** attempts * 60_000),
+  }).where(eq(capiOutbox.id, r.id));
+}
+
 export async function runCapiBatch(): Promise<void> {
   // Rows Meta would reject anyway.
   await db.update(capiOutbox)
@@ -171,6 +191,16 @@ export async function runCapiBatch(): Promise<void> {
     }
     const message = res.body.error?.message ?? `HTTP ${res.status || 'network error'}`;
     const permanent = res.status >= 400 && res.status < 500 && res.status !== 429;
+    if (permanent && rows.length > 1) {
+      // One bad event must not fail the other 499: re-send each row on its own and settle it individually.
+      for (const r of rows) {
+        let one: { status: number; body: MetaResponse };
+        try { one = await postToMeta([r.payload as CapiItem], 10_000); }
+        catch (e) { one = { status: 0, body: { error: { message: e instanceof Error ? e.message : 'network error' } } }; }
+        await settleTx(tx, r, one.status, one.body);
+      }
+      return;
+    }
     for (const r of rows) {
       const attempts = r.attempts + 1;
       const dead = permanent || attempts >= MAX_ATTEMPTS;
@@ -183,8 +213,28 @@ export async function runCapiBatch(): Promise<void> {
   });
 }
 
+/** Safety net: a paid order whose server Purchase never got queued (crash/DB blip after payment) is re-recorded. Idempotent via event_id. */
+export async function reconcilePurchases(): Promise<void> {
+  const { recordServerEvent } = await import('./server');
+  const missing = await db
+    .select({ id: orders.id, customerId: orders.customerId, amountPaise: orders.amountPaise })
+    .from(orders)
+    .where(and(
+      eq(orders.status, 'paid'),
+      gt(orders.paidAt, new Date(Date.now() - MAX_AGE_MS + 3600_000)),
+      lte(orders.paidAt, new Date(Date.now() - 2 * 60_000)),
+      sql`NOT EXISTS (SELECT 1 FROM ${capiOutbox} o WHERE o.event_id = 'purchase_' || ${orders.id}::text AND o.event_name = 'Purchase')`,
+    ))
+    .limit(50);
+  for (const o of missing) {
+    console.warn('[capi] reconciling missing Purchase for order', o.id);
+    await recordServerEvent({ name: 'purchase', eventId: `purchase_${o.id}`, orderId: o.id, customerId: o.customerId, valuePaise: o.amountPaise });
+  }
+}
+
 export function registerCapiJob(register: (name: string, everyMs: number, fn: () => Promise<void>) => void): void {
   register('capi-outbox', 5000, runCapiBatch);
+  register('capi-purchase-reconcile', 5 * 60_000, reconcilePurchases);
 }
 
 /** Admin "send test event" button: sends a PageView straight to Meta (shows in Test events if a test code is set). */
