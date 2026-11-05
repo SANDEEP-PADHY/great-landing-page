@@ -83,7 +83,7 @@ async function buildConfirmation(orderId: string) {
     templateUrl: url(`/api/download/template?o=${r.order.publicId}&t=${t}`),
     invoiceUrl: url(`/invoice/${r.order.publicId}?t=${t}`),
     publicId: r.order.publicId, amountLabel: formatINR(r.order.amountPaise), paymentId: r.order.razorpayPaymentId ?? '-',
-    claudeValue: settings.claude_bonus_value, contactEmail: settings.contact_email,
+    bonusValue: settings.bonus_value, contactEmail: settings.contact_email,
   });
   const ics = buildIcs({ uid: r.order.id, slot: sv, description: 'GenZy Club live webinar. Join link will be sent on WhatsApp and email.' });
   return { r, react, ics, label };

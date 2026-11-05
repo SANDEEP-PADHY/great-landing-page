@@ -17,7 +17,7 @@ const Schema = z.object({
   regular_price_rupees: rupees,
   offer_ends_at: z.string().refine((v) => fromIstInput(v) !== null, 'Pick a valid date and time'),
   sales_open: z.boolean(),
-  claude_bonus_value: z.string().trim().min(1, 'Required').max(40),
+  bonus_value: z.string().trim().max(40),
   email_abandoned_enabled: z.boolean(),
   email_abandoned_delay_min: z.coerce.number().int().min(5, 'At least 5 minutes').max(1440),
   email_admin_alert_enabled: z.boolean(),
@@ -30,7 +30,7 @@ export async function saveSettingsAction(_p: ActionState, fd: FormData): Promise
   const parsed = Schema.safeParse({
     whatsapp_link: fd.get('whatsapp_link') ?? '', contact_email: fd.get('contact_email') ?? '', contact_phone: fd.get('contact_phone') ?? '',
     offer_price_rupees: fd.get('offer_price_rupees'), regular_price_rupees: fd.get('regular_price_rupees'), offer_ends_at: fd.get('offer_ends_at') ?? '',
-    sales_open: bool('sales_open'), claude_bonus_value: fd.get('claude_bonus_value') ?? '',
+    sales_open: bool('sales_open'), bonus_value: fd.get('bonus_value') ?? '',
     email_abandoned_enabled: bool('email_abandoned_enabled'), email_abandoned_delay_min: fd.get('email_abandoned_delay_min'),
     email_admin_alert_enabled: bool('email_admin_alert_enabled'), email_auto_reminder_enabled: bool('email_auto_reminder_enabled'),
   });
@@ -45,7 +45,7 @@ export async function saveSettingsAction(_p: ActionState, fd: FormData): Promise
   const next: Partial<Settings> = {
     whatsapp_link: v.whatsapp_link, contact_email: v.contact_email, contact_phone: v.contact_phone,
     offer_price_paise: v.offer_price_rupees * 100, regular_price_paise: v.regular_price_rupees * 100,
-    offer_ends_at: fromIstInput(v.offer_ends_at)!, sales_open: v.sales_open, claude_bonus_value: v.claude_bonus_value,
+    offer_ends_at: fromIstInput(v.offer_ends_at)!, sales_open: v.sales_open, bonus_value: v.bonus_value,
     email_abandoned_enabled: v.email_abandoned_enabled, email_abandoned_delay_min: v.email_abandoned_delay_min,
     email_admin_alert_enabled: v.email_admin_alert_enabled, email_auto_reminder_enabled: v.email_auto_reminder_enabled,
   };

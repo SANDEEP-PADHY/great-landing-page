@@ -42,7 +42,7 @@ export default async function SettingsPage() {
             <Field label="Offer ends (IST)"><input name="offer_ends_at" type="datetime-local" defaultValue={toIstInput(s.offer_ends_at)} required className={input} /></Field>
           </div>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            <Field label="Claude bonus value text"><input name="claude_bonus_value" defaultValue={s.claude_bonus_value} required className={input} /></Field>
+            <Field label="Template bonus value (optional)" hint="For example ₹999. Leave empty to hide the “worth” text."><input name="bonus_value" defaultValue={s.bonus_value} className={input} /></Field>
           </div>
           <div className="mt-4"><Check name="sales_open" label="Sales open" defaultChecked={s.sales_open} hint="Turn off to show “Bookings closed” and block new checkouts." /></div>
         </Card>

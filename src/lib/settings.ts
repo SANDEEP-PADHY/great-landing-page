@@ -12,7 +12,7 @@ export const DEFAULT_SETTINGS: Settings = {
   regular_price_paise: 249900,
   offer_ends_at: '2026-11-10T23:59:59+05:30',
   sales_open: true,
-  claude_bonus_value: '₹2,000',
+  bonus_value: '',
   email_abandoned_enabled: true,
   email_abandoned_delay_min: 45,
   email_admin_alert_enabled: true,
@@ -44,7 +44,7 @@ export async function getPublicSettings(): Promise<PublicSettings> {
   return {
     whatsapp_link: s.whatsapp_link, contact_email: s.contact_email, contact_phone: s.contact_phone,
     offer_price_paise: s.offer_price_paise, regular_price_paise: s.regular_price_paise,
-    offer_ends_at: s.offer_ends_at, sales_open: s.sales_open, claude_bonus_value: s.claude_bonus_value,
+    offer_ends_at: s.offer_ends_at, sales_open: s.sales_open, bonus_value: s.bonus_value,
   };
 }
 

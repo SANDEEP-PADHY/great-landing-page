@@ -18,7 +18,7 @@ export function StickyBar() {
           {offerLive && <div className="tnum" style={{ fontSize: 12, color: '#1D4ED8', fontWeight: 700 }}>Ends in <Countdown variant="dh" /></div>}
         </div>
         <div className="sbar-copy" style={{ flex: 1, fontSize: 14, color: '#2F343C' }}>
-          <strong style={{ color: '#0E1013' }}>+ Free Claude subscription worth ₹2,000</strong> · Live 7–10 Nov, 7–9 PM IST
+          <strong style={{ color: '#0E1013' }}>+ Free landing page template</strong> · Live 7–10 Nov, 7–9 PM IST
         </div>
         <CtaButton location="sticky_bar" className="cta raised-sm" style={{ flex: 1, maxWidth: 300, marginLeft: 'auto', height: 52, border: 0, borderRadius: 14, background: 'var(--cta)', color: '#0E1013', fontSize: 16, fontWeight: 800 }}>
           Book my seat
