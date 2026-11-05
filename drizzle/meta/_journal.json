@@ -8,6 +8,13 @@
       "when": 1793583546904,
       "tag": "0000_eminent_vulcan",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793906733608,
+      "tag": "0001_slot_capacity_archive",
+      "breakpoints": true
     }
   ]
 }

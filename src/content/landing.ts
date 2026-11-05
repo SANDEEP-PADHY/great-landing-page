@@ -7,7 +7,7 @@ export const TICKER = [
   'No code',
   'Runs 24/7',
   'Live in Hinglish',
-  '₹499 till 10 Nov',
+  'Launch price',
 ];
 
 export const STEPS = [
@@ -61,7 +61,7 @@ export const SITE = {
   defaultContactEmail: 'genzyclub.com@gmail.com',
   title: 'Live Webinar: ₹1 Lakh in a Week with an Automated Digital Product | GenZy Club',
   description:
-    'Join my 2-hour live webinar and learn to build and sell your own digital product on autopilot. ₹499 till 10 Nov, with a free landing page template.',
+    'Join my 2-hour live webinar and learn to build and sell your own digital product on autopilot. Limited-time launch price, with a free landing page template.',
   contentId: 'webinar_nov_2026',
 };
 

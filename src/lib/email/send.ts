@@ -11,6 +11,7 @@ import { formatINR } from '../pricing';
 import { getSettingsFresh } from '../settings';
 import { getOrderById } from '../orders';
 import { getSlotRow, toSlotView } from '../slots';
+import { timeRangeIST } from '../slot-format';
 import { signOrderToken } from '../tokens';
 import type { SlotId } from '../contracts';
 import { OrderConfirmation } from './templates/OrderConfirmation';
@@ -67,7 +68,7 @@ export async function sendEmail(i: SendInput): Promise<{ ok: boolean; id?: strin
 }
 
 const url = (path: string) => `${env().APP_URL}${path}`;
-const slotLabel = (s: { dayLabel: string; dateLabel: string }) => `${s.dayLabel} ${s.dateLabel}, 7–9 PM IST`;
+const slotLabel = (s: { dayLabel: string; dateLabel: string; startsAt: Date; endsAt: Date }) => `${s.dayLabel} ${s.dateLabel}, ${timeRangeIST(s)}`;
 
 async function buildConfirmation(orderId: string) {
   const r = await getOrderById(orderId);

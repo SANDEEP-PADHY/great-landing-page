@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getOrderReceipt } from '@/lib/orders';
 import { getPublicSettings } from '@/lib/settings';
+import { timeRangeIST } from '@/lib/slot-format';
 import { SITE } from '@/content/landing';
 import { TrackingRoot } from '@/components/tracking/TrackingRoot';
 import { PurchasePixel } from '@/components/tracking/PurchasePixel';
@@ -38,7 +39,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: SP 
   const receipt = o && t ? await getOrderReceipt(o, t) : null;
   if (!o || !t || !receipt) return <NotFound email={email} />;
 
-  const slotLabel = `${receipt.slot.dayLabel} ${receipt.slot.dateLabel}, 7 PM`;
+  const slotLabel = `${receipt.slot.dayLabel} ${receipt.slot.dateLabel}, ${timeRangeIST(receipt.slot)}`;
 
   if (receipt.status !== 'paid') {
     return (

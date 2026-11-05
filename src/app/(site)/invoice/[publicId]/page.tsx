@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getOrderReceipt } from '@/lib/orders';
 import { getPublicSettings } from '@/lib/settings';
+import { timeRangeIST } from '@/lib/slot-format';
 import { SITE } from '@/content/landing';
 import { PrintButton } from '@/components/site/ThankYouClient';
 import { dateTimeIST, inr, longDateIST } from '@/components/landing/format';
@@ -23,7 +24,7 @@ export default async function InvoicePage({ params, searchParams }: { params: Pr
     ['Billed to', r.customer.name],
     ['Email', r.customer.email],
     ['WhatsApp', '+91 ' + r.customer.phone.replace(/^\+?91/, '')],
-    ['Item', `Live webinar seat · ${r.slot.dayLabel} ${r.slot.dateLabel}, 7–9 PM IST`],
+    ['Item', `Live webinar seat · ${r.slot.dayLabel} ${r.slot.dateLabel}, ${timeRangeIST(r.slot)}`],
     ['Payment status', paid ? 'Paid' : r.status === 'pending' ? 'Pending' : 'Not paid'],
     ...(paid && r.paymentId ? [['Razorpay payment ID', r.paymentId] as [string, string]] : []),
     ...(paid && r.method ? [['Payment method', r.method.toUpperCase()] as [string, string]] : []),

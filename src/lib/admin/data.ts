@@ -4,7 +4,7 @@ import { and, count, desc, eq, ilike, inArray, lt, or, sql, sum, type SQL } from
 import { db } from '@/lib/db/client';
 import { customers, emailLog, orders, slots, visitors } from '@/lib/db/schema';
 import { first, resolveRange } from './time';
-import { SLOT_IDS, type DateRange } from '@/lib/contracts';
+import type { DateRange } from '@/lib/contracts';
 
 type Params = Record<string, string | string[] | undefined>;
 export const PAGE_SIZE = 50;
@@ -26,7 +26,7 @@ export function parseOrderFilter(sp: Params, defaultStatus: OrderFilter['status'
   const r = resolveRange(sp, 'all');
   return {
     q: first(sp.q)?.trim() || undefined,
-    slot: SLOT_IDS.find((s) => s === slot),
+    slot: slot && slot.length <= 40 ? slot : undefined,
     status,
     watched: first(sp.watched) === 'yes' ? 'yes' : first(sp.watched) === 'no' ? 'no' : undefined,
     contacted: first(sp.contacted) === 'yes' ? 'yes' : first(sp.contacted) === 'no' ? 'no' : undefined,
@@ -123,13 +123,14 @@ export async function recentSales(limit = 10) {
 }
 
 export async function slotStats() {
-  const [rows, stats] = await Promise.all([
-    db.select().from(slots).orderBy(slots.sort, slots.startsAt),
+  const [rows, stats, totals] = await Promise.all([
+    db.select().from(slots).orderBy(slots.startsAt, slots.sort),
     db.select({ slotId: orders.slotId, buyers: count(), revenue: sum(orders.amountPaise) }).from(orders).where(eq(orders.status, 'paid')).groupBy(orders.slotId),
+    db.select({ slotId: orders.slotId, c: count() }).from(orders).groupBy(orders.slotId),
   ]);
   return rows.map((s) => {
     const st = stats.find((x) => x.slotId === s.id);
-    return { ...s, buyers: Number(st?.buyers ?? 0), revenuePaise: Number(st?.revenue ?? 0) };
+    return { ...s, buyers: Number(st?.buyers ?? 0), revenuePaise: Number(st?.revenue ?? 0), orderCount: Number(totals.find((x) => x.slotId === s.id)?.c ?? 0) };
   });
 }
 

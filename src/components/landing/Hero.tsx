@@ -1,4 +1,5 @@
-import type { MediaMap } from '@/lib/contracts';
+import type { MediaMap, SlotView } from '@/lib/contracts';
+import { dateChoiceLabel, dateRangeLabel, timeRangeIST } from '@/lib/slot-format';
 import { CtaButton } from './CtaButton';
 import { HeroCounter } from './HeroCounter';
 import { SiteImage } from './SiteImage';
@@ -6,14 +7,18 @@ import type { PriceCopy } from './format';
 
 const ico = { fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true } as const;
 
-export function Hero({ media, p, bonusValue }: { media: MediaMap; p: PriceCopy; bonusValue: string }) {
+export function Hero({ media, p, bonusValue, slots }: { media: MediaMap; p: PriceCopy; bonusValue: string; slots: SlotView[] }) {
+  const upcoming = slots.filter((s) => s.isOpen && Date.parse(s.startsAt) > Date.now());
+  const sched = upcoming.length ? upcoming : slots;
+  const range = dateRangeLabel(sched);
+  const times = sched[0] ? timeRangeIST(sched[0]) : '';
   return (
     <div data-section="hero" className="wrap sec" style={{ paddingTop: 40 }}>
       <div className="bento">
         <div className="stack" style={{ gridArea: 'head', justifyContent: 'center', padding: '8px 4px' }}>
           <div className="rise d1" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 12, fontWeight: 800, letterSpacing: '.08em', textTransform: 'uppercase', color: '#FFFFFF', background: '#0E1013', borderRadius: 6, padding: '5px 9px' }}>Live webinar</span>
-            <span style={{ fontSize: 13, fontWeight: 700, color: '#1D4ED8' }}>2 hours · 7–10 Nov · 7–9 PM IST</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: '#1D4ED8' }}>2 hours{range ? ` · ${range}` : ''}{times ? ` · ${times}` : ''}</span>
           </div>
           <div className="rise d1 disp hook" style={{ fontWeight: 600, color: '#2F343C', maxWidth: 460 }}>I was asleep. My phone kept buzzing with payments.</div>
           <h1 className="disp rise d2" style={{ margin: 0, fontWeight: 800 }}>
@@ -56,7 +61,7 @@ export function Hero({ media, p, bonusValue }: { media: MediaMap; p: PriceCopy; 
 
         <div className="rise d4 raised" style={{ gridArea: 'get', borderRadius: 24, background: '#F4F5F7', padding: '8px 20px' }}>
           <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: '.08em', textTransform: 'uppercase', color: '#474D57', padding: '12px 0 4px' }}>What you get for {p.now}</div>
-          <GetRow bottom icon={<><rect x="2" y="5" width="14" height="14" rx="2" /><path d="M16 10l6-3v10l-6-3" /></>} title="1 live webinar seat" sub="Pick 7, 8, 9 or 10 Nov · 7–9 PM IST" />
+          <GetRow bottom icon={<><rect x="2" y="5" width="14" height="14" rx="2" /><path d="M16 10l6-3v10l-6-3" /></>} title="1 live webinar seat" sub={sched.length ? `Pick ${dateChoiceLabel(sched)} · ${times}` : 'Dates announced soon'} />
           <GetRow bottom icon={<><path d="M12 3l9 5-9 5-9-5z" /><path d="M3 13l9 5 9-5" /></>} title="The full system + live Q&A" sub="Idea, AI creation, store, payments, auto delivery, traffic" />
           <GetRow last icon={<><rect x="3" y="8" width="18" height="13" rx="2" /><path d="M12 8v13M3 12h18" /></>} title={`FREE landing page template${bonusValue ? ` worth ${bonusValue}` : ''}`} sub="The page structure I use to sell. Instant download" />
         </div>

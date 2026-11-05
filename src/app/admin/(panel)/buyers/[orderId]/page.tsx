@@ -8,9 +8,8 @@ import { getVisitorJourney } from '@/lib/analytics/queries';
 import { getOrderDetail } from '@/lib/admin/data';
 import { fmtDateTime } from '@/lib/admin/time';
 import { waLink } from '@/lib/admin/whatsapp';
-import { SLOT_IDS } from '@/lib/contracts';
 import { formatINR } from '@/lib/pricing';
-import { getSlots } from '@/lib/slots';
+import { getSlotRows } from '@/lib/slots';
 import { changeSlotAction, resendConfirmationAction, saveNoteAction, toggleFlagAction } from './actions';
 
 export const metadata: Metadata = { title: 'Buyer' };
@@ -25,7 +24,7 @@ export default async function BuyerDetail({ params }: { params: Promise<{ orderI
   const d = await getOrderDetail(orderId);
   if (!d) notFound();
   const { order: o, customer: c, slot, visitor, emails, otherOrders } = d;
-  const [slots, journey] = await Promise.all([getSlots(), o.visitorId ? getVisitorJourney(o.visitorId) : Promise.resolve([])]);
+  const [slots, journey] = await Promise.all([getSlotRows(), o.visitorId ? getVisitorJourney(o.visitorId) : Promise.resolve([])]);
   const first = (visitor?.firstTouch ?? {}) as Record<string, unknown>;
   const touch = (t: Record<string, unknown>) => Object.entries(t).filter(([, v]) => v).map(([k, v]) => `${k}: ${String(v)}`).join(' · ') || '—';
 
@@ -82,7 +81,7 @@ export default async function BuyerDetail({ params }: { params: Promise<{ orderI
             <ActionForm action={changeSlotAction.bind(null, o.id)} className="flex flex-wrap items-end gap-2">
               <Field label="Change slot">
                 <select name="slotId" defaultValue={o.slotId} className={input}>
-                  {SLOT_IDS.map((id) => { const s = slots.find((x) => x.id === id); return <option key={id} value={id}>{s ? `${s.dayLabel} ${s.dateLabel}` : id}</option>; })}
+                  {slots.map((s) => <option key={s.id} value={s.id}>{s.dayLabel} {s.dateLabel}{s.archivedAt ? ' (archived)' : ''}</option>)}
                 </select>
               </Field>
               <SubmitButton variant="plain">Move</SubmitButton>

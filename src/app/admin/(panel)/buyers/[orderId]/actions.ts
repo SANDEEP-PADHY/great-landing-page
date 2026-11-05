@@ -4,7 +4,6 @@ import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import type { ActionState } from '@/lib/admin/action-state';
 import { logAudit } from '@/lib/admin/audit';
-import { SLOT_IDS } from '@/lib/contracts';
 import { requireAdmin } from '@/lib/auth/session';
 import { db } from '@/lib/db/client';
 import { orders } from '@/lib/db/schema';
@@ -15,7 +14,7 @@ const Id = z.string().uuid();
 
 export async function changeSlotAction(orderId: string, _p: ActionState, fd: FormData): Promise<ActionState> {
   await requireAdmin();
-  const slot = z.enum(SLOT_IDS).safeParse(fd.get('slotId'));
+  const slot = z.string().min(1).max(40).safeParse(fd.get('slotId'));
   if (!Id.safeParse(orderId).success || !slot.success) return { error: 'Pick a valid slot.' };
   try {
     await changeOrderSlot(orderId, slot.data);
