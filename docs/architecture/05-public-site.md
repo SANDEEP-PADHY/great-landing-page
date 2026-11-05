@@ -30,9 +30,9 @@ The design file is a self-contained page: a `<style>` block with `.nm` classes, 
 | # | Component | `section` id | Dynamic data | Tracking calls WS2 adds |
 |---|---|---|---|---|
 | 1 | `TopBar` (sticky top): "DIWALI OFFER · Ends in {d}d {h}h {m}m {s}s", logo, **`ClaimPill`** "Free Claude · Claim now" | `topbar` | `offer_ends_at` | pill → `cta_click {location:'claim_pill'}` then open sheet |
-| 2 | `Hero`: eyebrow, hook "I was asleep…", "₹1.4 lakh. 7 days.", lead, hero portrait, ₹ counter badge, Claude bonus card, "What you get for ₹499" card, price ₹499 ~~₹2,499~~ "Save 80% · till 10 Nov", CTA, Razorpay trust line | `hero` | prices, media `hero`, `claude_logo` | CTA → `cta_click {location:'hero'}` |
+| 2 | `Hero`: eyebrow, hook "I was asleep…", "₹1 lakh in a week.", lead, hero portrait, ₹ counter badge, Claude bonus card, "What you get for ₹499" card, price ₹499 ~~₹2,499~~ "Save 80% · till 10 Nov", CTA, Razorpay trust line | `hero` | prices, media `hero`, `claude_logo` | CTA → `cta_click {location:'hero'}` |
 | 3 | `Ticker` marquee | `ticker` | `tick` array | none |
-| 4 | `Proof`: Razorpay dashboard image, ₹1.4L / 7 days / 1 ebook stats, disclaimer | `proof` | media `proof` | `media_click {key:'proof'}` if image tapped |
+| 4 | `Proof`: Razorpay dashboard image, ₹1L / 1 week / 1 ebook stats, disclaimer | `proof` | media `proof` | `media_click {key:'proof'}` if image tapped |
 | 5 | `Steps`: "Set it up once. It sells every day." Idea → Create → Automate → Sell | `system` | `steps` | none |
 | 6 | `Learn`: "Most people learn AI. You'll earn with it." 6 items | `learn` | `learn` | none |
 | 7 | `ForYou`: yes / no lists | `for_you` | `forYes`, `forNo` | none |
@@ -61,7 +61,7 @@ Media rendering: `<SiteImage k="hero" />` uses `media[k]` (WebP `srcset`, width/
 `hero` (3:4, 1200×1600) · `proof` (Razorpay screenshot) · `host` (host photo) · `claude_logo` · `bonus_template_cover` (optional) · `og_image` (1200×630) · `logo` · `favicon` · `bonus_template_file` (kind `file`, private).
 
 ### Metadata
-`generateMetadata()`: title "Live Webinar: ₹1.4L in 7 Days with an Automated Digital Product | GenZy Club", description, Open Graph + Twitter image from `og_image`, `themeColor #D9DCE2`, favicon from `favicon` media. `robots`: index the landing and legal pages; `noindex` thank-you, invoice, admin.
+`generateMetadata()`: title "Live Webinar: ₹1 lakh in 7 Days with an Automated Digital Product | GenZy Club", description, Open Graph + Twitter image from `og_image`, `themeColor #D9DCE2`, favicon from `favicon` media. `robots`: index the landing and legal pages; `noindex` thank-you, invoice, admin.
 
 ## URL parameters
 - `?slot=s8` preselects a slot (used by the abandoned email). Ignore if closed.

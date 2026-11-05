@@ -17,12 +17,12 @@ export function Hero({ media, p, bonusValue }: { media: MediaMap; p: PriceCopy; 
           </div>
           <div className="rise d1 disp hook" style={{ fontWeight: 600, color: '#2F343C', maxWidth: 460 }}>I was asleep. My phone kept buzzing with payments.</div>
           <h1 className="disp rise d2" style={{ margin: 0, fontWeight: 800 }}>
-            <span className="t1">₹1.2 lakh.</span>
-            <span className="t2">7 days.</span>
+            <span className="t1">₹1 lakh</span>
+            <span className="t2">in a week.</span>
             <span className="t3" style={{ color: '#1D4ED8' }}>Fully automated.</span>
           </h1>
           <p className="lead rise d3" style={{ margin: 0, color: '#2F343C', maxWidth: 560 }}>
-            Join my 2-hour live webinar and learn to build and sell your own digital product on autopilot. I&apos;ll set up the exact system that made me ₹1.2L, step by step. No inventory. No team. No code.
+            Join my 2-hour live webinar and learn to build and sell your own digital product on autopilot. I&apos;ll set up the exact system that made me ₹1 lakh, step by step. No inventory. No team. No code.
           </p>
         </div>
 
@@ -38,7 +38,7 @@ export function Hero({ media, p, bonusValue }: { media: MediaMap; p: PriceCopy; 
             </span>
             <div style={{ lineHeight: 1.15 }}>
               <div className="disp" style={{ fontWeight: 800, fontSize: 26 }}><HeroCounter /></div>
-              <div style={{ fontSize: 13, color: '#2F343C', fontWeight: 600 }}>in 7 days · fully automated</div>
+              <div style={{ fontSize: 13, color: '#2F343C', fontWeight: 600 }}>in a week · fully automated</div>
             </div>
           </div>
         </div>

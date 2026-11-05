@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-/** ₹ counter that eases up to 1,20,000 on load. Final value is server-rendered. */
-export function HeroCounter({ target = 120000 }: { target?: number }) {
+/** ₹ counter that eases up to 1,00,000 on load. Final value is server-rendered. */
+export function HeroCounter({ target = 100000 }: { target?: number }) {
   const [n, setN] = useState(target);
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

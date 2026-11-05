@@ -5,7 +5,7 @@
 **Repo (for build phase):** https://github.com/SANDEEP-PADHY/great-landing-page
 
 ## What we are building
-One single landing page that sells a paid **live Hinglish webinar**: *"How I made ₹1.4 lakh in 7 days with a fully automated digital product business, and how you can build the same system."*
+One single landing page that sells a paid **live Hinglish webinar**: *"How I made ₹1 lakh in a week with a fully automated digital product business, and how you can build the same system."*
 
 A visitor arrives (mostly from Meta ads), reads one page, picks a webinar slot, enters **name, phone, email**, pays with **Razorpay**, and instantly gets the **WhatsApp community link**. Behind it sits a small **admin panel** with sales, analytics and the buyer database.
 
@@ -16,7 +16,7 @@ A visitor arrives (mostly from Meta ads), reads one page, picks a webinar slot, 
 | Item | Decision |
 |---|---|
 | Product | Live webinar, Hinglish, hosted by Sandeep Padhy (face + name on page) |
-| Your proof product | Ebook on maximising a Claude subscription (Meta ads, websites, selling) → ₹1.4L in 7 days |
+| Your proof product | Ebook on maximising a Claude subscription (Meta ads, websites, selling) → ₹1 lakh in a week |
 | Platform | webinar.gg (join link shared later via WhatsApp + email) |
 | Slots | 7, 8, 9, 10 November 2026, 7:00 to 9:00 PM IST, buyer picks one at checkout |
 | Upsells | None inside the webinar |
@@ -50,4 +50,4 @@ A visitor arrives (mostly from Meta ads), reads one page, picks a webinar slot, 
 1. **Time.** Today is 1 Nov, first slot is 7 Nov. That leaves ~5 days to build, get Razorpay live, and run ads. Tight but doable if Razorpay is started **today**. Diwali falls in the middle of the batches, which fits the offer theme.
 2. **Razorpay approval needs the website first.** Razorpay checks your site for Terms, Privacy, Refund, Contact and Pricing pages before activating live mode. We build those first (see timeline).
 3. **Ads start only after everything works end to end** (agreed).
-4. **Meta ad review** can reject "make money" claims. Copy must show the ₹1.4L as *your* result, with an earnings disclaimer, not a promise.
+4. **Meta ad review** can reject "make money" claims. Copy must show the ₹1 lakh as *your* result, with an earnings disclaimer, not a promise.

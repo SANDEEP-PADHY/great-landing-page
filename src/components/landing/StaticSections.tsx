@@ -41,7 +41,7 @@ export function Proof({ media }: { media: MediaMap }) {
           <TrackClick event="media_click" props={{ key: 'proof' }} label="Razorpay dashboard screenshot" style={{ width: '100%', maxWidth: 820 }}>{img}</TrackClick>
         ) : img}
         <div className="g3" style={{ width: '100%', maxWidth: 820 }}>
-          {[['₹1.2L', 'revenue'], ['7 days', 'from launch'], ['1 ebook', 'the only product']].map(([a, b]) => (
+          {[['₹1L', 'revenue'], ['1 week', 'from launch'], ['1 ebook', 'the only product']].map(([a, b]) => (
             <div key={a} className="raised-sm" style={{ borderRadius: 18, padding: 18, background: '#F4F5F7' }}>
               <div className="disp" style={{ fontSize: 30, fontWeight: 800 }}>{a}</div>
               <div style={{ fontSize: 14, color: '#2F343C' }}>{b}</div>
@@ -121,7 +121,7 @@ export function Host({ media }: { media: MediaMap }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: 6 }}>
           <div className="eyebrow">YOUR HOST</div>
           <h2 className="disp h2" style={{ margin: 0, fontWeight: 800 }}>Sandeep Padhy</h2>
-          <p style={{ margin: 0, color: '#2F343C' }}>I wrote one ebook on getting the most out of AI. I set up a fully automated store, ran Meta ads, and made ₹1.2 lakh in 7 days.</p>
+          <p style={{ margin: 0, color: '#2F343C' }}>I wrote one ebook on getting the most out of AI. I set up a fully automated store, ran Meta ads, and made ₹1 lakh in a week.</p>
           <p style={{ margin: 0, color: '#2F343C' }}>In this session I rebuild that system live and answer your questions.</p>
         </div>
       </div>
