@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { sql } from '../src/lib/db/client';
 import { db } from '../src/lib/db/client';
 import { siteSettings, slots } from '../src/lib/db/schema';
+import { count, eq } from 'drizzle-orm';
 import { DEFAULT_SETTINGS } from '../src/lib/settings';
 
 const SLOTS = [
@@ -12,18 +13,22 @@ const SLOTS = [
 ];
 
 async function main() {
-  for (const s of SLOTS) {
-    // upsert dates/labels; never overwrite isOpen or webinarUrl edited in admin
-    await db.insert(slots).values({ ...s, startsAt: new Date(s.startsAt), endsAt: new Date(s.endsAt) })
-      .onConflictDoUpdate({
-        target: slots.id,
-        set: { dayLabel: s.dayLabel, dateLabel: s.dateLabel, startsAt: new Date(s.startsAt), endsAt: new Date(s.endsAt), sort: s.sort },
-      });
+  // Slots are managed in the admin panel. Seed the initial four only once, ever: the `slots_seeded`
+  // flag stops a deploy from re-creating (or resetting dates of) slots that were deleted or edited in admin.
+  const [flag] = await db.select().from(siteSettings).where(eq(siteSettings.key, 'slots_seeded')).limit(1);
+  if (!flag) {
+    const [existing] = await db.select({ c: count() }).from(slots);
+    if (!Number(existing?.c ?? 0)) {
+      for (const s of SLOTS) {
+        await db.insert(slots).values({ ...s, startsAt: new Date(s.startsAt), endsAt: new Date(s.endsAt) }).onConflictDoNothing();
+      }
+    }
+    await db.insert(siteSettings).values({ key: 'slots_seeded', value: true as never }).onConflictDoNothing();
   }
   for (const [key, value] of Object.entries(DEFAULT_SETTINGS)) {
     await db.insert(siteSettings).values({ key, value: value as never }).onConflictDoNothing();
   }
-  console.log('seeded: 4 slots, default settings');
+  console.log('seeded: default settings (slots only on first run)');
   await sql.end();
 }
 main().catch((e) => { console.error(e); process.exit(1); });

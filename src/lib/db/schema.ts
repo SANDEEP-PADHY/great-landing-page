@@ -10,7 +10,7 @@ export const emailStatus = pgEnum('email_status', ['queued', 'sent', 'failed']);
 const ts = (name: string) => timestamp(name, { withTimezone: true });
 
 export const slots = pgTable('slots', {
-  id: text('id').primaryKey(),                       // 's7' | 's8' | 's9' | 's10'
+  id: text('id').primaryKey(),                       // 's7' for seeded slots; admin-created slots get 's' + random hex
   dayLabel: text('day_label').notNull(),             // 'Sat'
   dateLabel: text('date_label').notNull(),           // '7 Nov'
   startsAt: ts('starts_at').notNull(),               // 2026-11-07T13:30:00Z (7 PM IST)
@@ -18,6 +18,8 @@ export const slots = pgTable('slots', {
   isOpen: boolean('is_open').notNull().default(true),// manual override; also closes automatically at startsAt
   webinarUrl: text('webinar_url'),                   // webinar.gg link, set in admin
   sort: integer('sort').notNull().default(0),
+  capacity: integer('capacity'),                     // max paid seats; null = unlimited
+  archivedAt: ts('archived_at'),                     // set instead of deleting when orders exist; hidden from the public site
 });
 
 export const customers = pgTable('customers', {

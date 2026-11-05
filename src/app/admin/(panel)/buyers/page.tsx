@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { Badge, Empty, PageHeader, Pagination, RangePicker, StatusBadge, TableBox, btn, btnPrimary, hrefWith, input, td, th } from '@/components/admin/ui';
 import { PAGE_SIZE, listOrders, parseOrderFilter } from '@/lib/admin/data';
 import { first, fmtDateTime, resolveRange } from '@/lib/admin/time';
-import { SLOT_IDS } from '@/lib/contracts';
-import { getSlots } from '@/lib/slots';
+import { getSlotRows } from '@/lib/slots';
 import { formatINR } from '@/lib/pricing';
 
 export const metadata: Metadata = { title: 'Buyers' };
@@ -14,7 +13,7 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
   const sp = await searchParams;
   const f = parseOrderFilter(sp, 'paid');
   const page = Math.max(1, Number(first(sp.page)) || 1);
-  const [{ rows, total }, slots] = await Promise.all([listOrders(f, page), getSlots()]);
+  const [{ rows, total }, slots] = await Promise.all([listOrders(f, page), getSlotRows()]);
   const r = resolveRange(sp, 'all');
   const exportHref = hrefWith('/api/admin/export/buyers', sp, { page: undefined });
 
@@ -27,7 +26,7 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
         <input name="q" defaultValue={f.q} placeholder="Search name, phone, email, GZ-… or pay_…" className={`${input} lg:col-span-2`} />
         <select name="slot" defaultValue={f.slot ?? ''} className={input} aria-label="Slot">
           <option value="">All slots</option>
-          {SLOT_IDS.map((id) => { const s = slots.find((x) => x.id === id); return <option key={id} value={id}>{s ? `${s.dayLabel} ${s.dateLabel}` : id}</option>; })}
+          {slots.map((s) => <option key={s.id} value={s.id}>{s.dayLabel} {s.dateLabel}{s.archivedAt ? ' (archived)' : ''}</option>)}
         </select>
         <select name="status" defaultValue={f.status} className={input} aria-label="Status">
           {['paid', 'pending', 'failed', 'expired', 'all'].map((s) => <option key={s} value={s}>{s === 'all' ? 'Any status' : s}</option>)}

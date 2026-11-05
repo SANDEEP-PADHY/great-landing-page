@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
-export const SLOT_IDS = ['s7', 's8', 's9', 's10'] as const;
-export type SlotId = (typeof SLOT_IDS)[number];
+export type SlotId = string;
 
 export const MEDIA_KEYS = [
   'hero', 'proof', 'host', 'bonus_template_cover',
@@ -41,7 +40,7 @@ export type MediaView = {
 export type MediaMap = Partial<Record<MediaKey, MediaView>>;
 
 export const CreateOrderRequest = z.object({
-  slotId: z.enum(SLOT_IDS),
+  slotId: z.string().min(1).max(40),
   name: z.string().trim().min(2).max(80),
   phone: z.string().regex(/^[6-9]\d{9}$/),
   email: z.string().trim().toLowerCase().email().max(120),

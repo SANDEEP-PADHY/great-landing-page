@@ -6,7 +6,8 @@ import { customers, orders, slots, visitors } from './db/schema';
 import type { CreateOrderRequest, CreateOrderResponse, OrderReceipt, SlotId } from './contracts';
 import { requireEnv } from './env';
 import { getSettings } from './settings';
-import { getSlotRow, isSlotBookable, toSlotView } from './slots';
+import { getSlotRow, isSlotBookable, paidSeatsFor, toSlotView } from './slots';
+import { timeRangeIST } from './slot-format';
 import { getCurrentPricePaise } from './pricing';
 import { razorpay } from './razorpay';
 import { verifyOrderToken } from './tokens';
@@ -42,8 +43,8 @@ export function parseAttr(raw: string | undefined): Record<string, string | unde
   }
 }
 
-function slotDescription(s: { dayLabel: string; dateLabel: string }): string {
-  return `Live webinar seat · ${s.dayLabel} ${s.dateLabel}, 7–9 PM IST`;
+function slotDescription(s: { dayLabel: string; dateLabel: string; startsAt: Date; endsAt: Date }): string {
+  return `Live webinar seat · ${s.dayLabel} ${s.dateLabel}, ${timeRangeIST(s)}`;
 }
 
 export async function createCheckoutOrder(input: CreateOrderRequest, at: Attribution): Promise<CreateOrderResponse> {
@@ -52,6 +53,7 @@ export async function createCheckoutOrder(input: CreateOrderRequest, at: Attribu
   if (!settings.sales_open) throw new OrderError('sales_closed');
   const slot = await getSlotRow(input.slotId);
   if (!slot || !isSlotBookable(slot, now)) throw new OrderError('slot_closed');
+  if (slot.capacity != null && (await paidSeatsFor(slot.id)) >= slot.capacity) throw new OrderError('slot_closed');
   const amount = getCurrentPricePaise(settings, now);
   const phone = `+91${input.phone}`;
 
@@ -149,7 +151,7 @@ export async function markOrderFailure(razorpayOrderId: string, reason: string):
 
 export async function changeOrderSlot(orderId: string, slotId: SlotId): Promise<void> {
   const slot = await getSlotRow(slotId);
-  if (!slot) throw new OrderError('not_found');
+  if (!slot || slot.archivedAt) throw new OrderError('not_found');
   await db.update(orders).set({ slotId, updatedAt: new Date(), reminderSentAt: null }).where(eq(orders.id, orderId));
 }
 

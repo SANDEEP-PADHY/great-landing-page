@@ -52,7 +52,7 @@ export default async function LandingPage() {
     <LandingProvider slots={slots} price={price} salesOpen={settings.sales_open} renderedAt={now.getTime()}>
       <TrackingRoot pageType="landing" />
       <TopBar logoSrc={media.logo?.src} />
-      <Hero media={media} p={p} bonusValue={bonus} />
+      <Hero media={media} p={p} bonusValue={bonus} slots={slots} />
       <Ticker p={p} />
       <Proof media={media} />
       <Steps />
